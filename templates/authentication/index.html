@@ -1,19 +1,42 @@
-
+{% load static %}
+<!DOCTYPE html>
 <html>
-            <div className = 'wrapper' >
-                <form action="">
-                    <h1>Login Page</h1>
-                    <div className = "input-box">
-                        <input type = "text" placeholder= "Username" required />
-                    </div>
-                    <div className = "input-box">
-                        <input type = "password" placeholder = 'Password' required />
-                    </div>
-                    <div className= "remember-forgot">
-                        <button type = "submit">Login</button>
-                        <label><input type="checkbox"/>Remember me</label>
-                        <a href="#">Forgot password?</a>
-                    </div>
-                </form>
-            </div>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/index.css' %}">
+</head>
+<body>
+    <div class="black-box">
+        <a href = "https://www.umbc.edu/" target='blank'>
+        <img src = "https://entrepreneurship.umbc.edu/wp-content/themes/sights/images/apple-touch-icon.png" />
+        <span class='text'>UMBC</span>
+        </a>
+    </div>
+    <div class="yellow-box">
+        <a href="https://entrepreneurship.umbc.edu/" target="_blank">
+            <span class='text'>Alex. Brown Center For Entrepreneurship and Innovation</span>
+        </a>
+    </div>
+    <div class="container">
+        <img src = "https://entrepreneurship.umbc.edu/wp-content/uploads/sites/39/2022/05/new-CBIC-Logo-1-300x243.png" alt="External Source" />
+    </div>
+    <div class = "form-container">
+    <form>
+        <div>
+            <p class = "centered-heading">Sign in</p>
+        </div>
+        <div class="input-box">
+            <label for="username">Username / Email Address</label><br>
+            <input type="text" id="username" name="username" placeholder="Enter Input Here" required>
+        </div>
+        <div class="input-box">
+            <label for="password">Password</label><br>
+            <input type="password" id="password" name="password" placeholder="Enter Input Here" required>
+        </div>
+        <div class="remember-forgot">
+            <button type="submit">Login</button>
+            <a href="">Forgot password?</a>
+        </div>
+    </form>
+    </div>
+</body>
 </html>

@@ -5,7 +5,7 @@ from django.contrib import messages
 
 # Create your views here.
 def home(request):
-    return render(request, "authentication/index.html")
+    return render(request, "authentication/signin.html")
 
 def signin(request):
 

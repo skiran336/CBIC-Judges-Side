@@ -1,10 +1,14 @@
-.container {
+.img-container {
     display: flex;
     justify-content: center; 
     align-items: center;
-    width: 100vw; 
+    width: 100vw;     
     padding-top: 10px;
-    box-sizing: border-box; 
+}
+
+.img {
+    max-width: 100%;       
+    max-height: 100%;      
 }
 
 .form-container {
@@ -76,49 +80,56 @@
     height: 80px; 
     background-color: #fdb515;
     position: relative; 
-  }
-  
-  .yellow-box a {
+    display: flex;
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    padding: 0 20px; /* Ensures padding on both sides */
+}
+
+.yellow-box a {
     text-decoration: none;
     color: black;
     display: flex;
+    justify-content: center; /* Ensures the anchor tag's contents are centered */
     align-items: center;
-  }
-  .yellow-box a:hover .text {
+    width: 100%; /* Ensures the anchor tag spans the entire width of the container */
+}
+
+.yellow-box a:hover .text {
     text-decoration: underline;
-    color: black;
-    display: flex;
-    align-items: center;
-  }
-  .yellow-box .text {
+}
+
+.yellow-box .text {
     font-weight: bold;
     font-size: 35px;
-    margin-left: 420px;
-    margin-top: 18px;
-    font: bold;
-  }
-  @media (max-width: 768px) {
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Prevents text from spilling out */
+    text-overflow: ellipsis; /* Adds ellipsis if the text is too long */
+}
+
+@media (max-width: 768px) {
     .yellow-box {
         height: 60px;
     }
 
     .yellow-box .text {
         font-size: 24px; 
-        margin-left: 20px;
-        margin-top: 10px; 
+        margin-top: 0; /* Adjust if necessary to center vertically */
     }
-
 }
 
 @media (max-width: 480px) {
+    .yellow-box {
+        height: 50px; /* Adjust height as needed */
+    }
+
     .yellow-box .text {
         font-size: 18px; 
-        margin-left: 15px; 
     }
 }
 
 .input-box input {
-    width: 100%;
+    width: 80%;
     padding: 8px;
     margin: 5px 0;
     box-sizing: border-box;
@@ -134,12 +145,23 @@
 }
 
 .remember-forgot button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    padding: 10px 40px;
+    margin-right: 100px;
+    background-color: #fdb515;
+    color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+.remember-forgot button:hover {
+    background-color: #896f18; 
+}
+
+#Cancel{ 
+    background-color: #d3d3d3;
+}
+#Cancel:hover{
+    background-color: #7e7e7e; 
 }
 
 .remember-forgot a {

@@ -1,10 +1,14 @@
-.container {
+.img-container {
     display: flex;
     justify-content: center; 
     align-items: center;
-    width: 100vw; 
+    width: 100vw;     
     padding-top: 10px;
-    box-sizing: border-box; 
+}
+
+.img {
+    max-width: 100%;       
+    max-height: 100%;       
 }
 
 .form-container {
@@ -76,49 +80,56 @@
     height: 80px; 
     background-color: #fdb515;
     position: relative; 
-  }
-  
-  .yellow-box a {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    padding: 0 20px; 
+}
+
+.yellow-box a {
     text-decoration: none;
     color: black;
     display: flex;
+    justify-content: center; 
     align-items: center;
-  }
-  .yellow-box a:hover .text {
+    width: 100%; 
+}
+
+.yellow-box a:hover .text {
     text-decoration: underline;
-    color: black;
-    display: flex;
-    align-items: center;
-  }
-  .yellow-box .text {
+}
+
+.yellow-box .text {
     font-weight: bold;
     font-size: 35px;
-    margin-left: 420px;
-    margin-top: 18px;
-    font: bold;
-  }
-  @media (max-width: 768px) {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+@media (max-width: 768px) {
     .yellow-box {
         height: 60px;
     }
 
     .yellow-box .text {
         font-size: 24px; 
-        margin-left: 20px;
-        margin-top: 10px; 
+        margin-top: 0; 
     }
-
 }
 
 @media (max-width: 480px) {
+    .yellow-box {
+        height: 50px; 
+    }
+
     .yellow-box .text {
         font-size: 18px; 
-        margin-left: 15px; 
     }
 }
 
 .input-box input {
-    width: 100%;
+    width: 80%;
     padding: 8px;
     margin: 5px 0;
     box-sizing: border-box;
@@ -135,8 +146,8 @@
 
 .remember-forgot button {
     padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
+    background-color: #fdb515;
+    color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;

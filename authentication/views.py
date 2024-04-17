@@ -7,6 +7,10 @@ from django.contrib import messages
 def home(request):
     return render(request, "authentication/index.html")
 
+def signin(request):
+
+    return render(request, "authentication/signin.html")
+
 def signup(request):
 
     if request.method == "POST":
@@ -34,9 +38,7 @@ def signup(request):
 
     return render(request, "authentication/signup.html")
 
-def signin(request):
 
-    return render(request, "authentication/signin.html")
 
 def signout(request):
     pass

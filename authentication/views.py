@@ -7,6 +7,9 @@ from django.contrib import messages
 def home(request):
     return render(request, "authentication/signin.html")
 
+def scorepage(request):
+    return render(request, "authentication/scorepage.html")
+
 def signin(request):
 
     return render(request, "authentication/signin.html")

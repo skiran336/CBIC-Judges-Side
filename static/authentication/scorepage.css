@@ -186,10 +186,11 @@ label {
     padding: 10px 0; 
 }
 
-.Center {
-    font-size: 24px; 
-    font-weight: bold; 
-    text-align: center; 
-    margin: 0; 
-    padding: 10px 0; 
+.submit button {
+    padding: 10px 20px;
+    background-color: #fdb515;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

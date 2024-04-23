@@ -1,1 +1,1 @@
-web: gunicorn cbic.wsgi --log-file -
+web: gunicorn cbic.wsgi:application

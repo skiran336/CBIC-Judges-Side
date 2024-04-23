@@ -165,7 +165,7 @@
 form {
     display: flex;
     flex-direction: column; 
-    width: 60%; 
+    width: 80%; 
     max-width: 500px; 
     padding: 20px;
     background: white; 
@@ -184,4 +184,13 @@ label {
     text-align: center; 
     margin: 0; 
     padding: 10px 0; 
+}
+
+.submit button {
+    padding: 10px 20px;
+    background-color: #fdb515;
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }

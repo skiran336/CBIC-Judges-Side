@@ -1,14 +1,17 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBIC Login Page</title>
     <link rel="stylesheet" type="text/css" href="{% static 'authentication/signin.css' %}">
 </head>
 <body>
     <div class="black-box">
-        <a href = "https://www.umbc.edu/" target='blank'>
-        <img src = "https://entrepreneurship.umbc.edu/wp-content/themes/sights/images/apple-touch-icon.png" />
-        <span class='text'>UMBC</span>
+        <a href="https://www.umbc.edu/" target="_blank">
+            <img src="https://entrepreneurship.umbc.edu/wp-content/themes/sights/images/apple-touch-icon.png" alt="UMBC Logo"/>
+            <span class='text'>UMBC</span>
         </a>
     </div>
     <div class="yellow-box">
@@ -16,30 +19,31 @@
             <span class='text'>Alex. Brown Center For Entrepreneurship and Innovation</span>
         </a>
     </div>
-    <div class ="form-container">
-        <img src = "https://entrepreneurship.umbc.edu/wp-content/uploads/sites/39/2022/05/new-CBIC-Logo-1-300x243.png" alt="External Source" />
+    <div class="form-container">
+        <img src="https://entrepreneurship.umbc.edu/wp-content/uploads/sites/39/2022/05/new-CBIC-Logo-1-300x243.png" alt="CBIC Logo" />
     </div>
-    <div class = "form-container">
-    <form>
-        <div>
-            <p class = "centered-heading">Sign in</p>
-        </div>
-        <div class="input-box">
-            <label for="username">Username / Email Address</label><br>
-            <input type="text" id="username" name="username" placeholder="Enter Input Here" required>
-        </div>
-        <div class="input-box">
-            <label for="password">Password</label><br>
-            <input type="password" id="password" name="password" placeholder="Enter Input Here" required>
-        </div>
-        <div class="remember-forgot">
-            <a href="">Forgot password?</a>
-            <button type="submit">Login</button>
-        </div>
-        <div class="remember-forgot">
-            <p>New User? Click <a href="/signup">here</a> to signup </p>
-        </div>
-    </form>
+    <div class="form-container">
+        <form method="post" action="{% url 'signin' %}">
+            {% csrf_token %}
+            <div>
+                <p class="centered-heading">Sign in</p>
+            </div>
+            <div class="input-box">
+                <label for="username">Username / Email Address:</label><br>
+                <input type="text" id="username" name="username" placeholder="Enter Input Here" required>
+            </div>
+            <div class="input-box">
+                <label for="password">Password:</label><br>
+                <input type="password" id="password" name="password" placeholder="Enter Input Here" required>
+            </div>
+            <div class="remember-forgot">
+                <a href="{% url 'forgot_password' %}">Forgot password?</a>
+                <button type="submit">Login</button>
+            </div>
+            <div class="remember-forgot">
+                <p>New User? Click <a href="{% url 'signup' %}">here</a> to signup</p>
+            </div>
+        </form>
     </div>
 </body>
 </html>

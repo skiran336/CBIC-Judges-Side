@@ -14,6 +14,9 @@ def home(request):
 
      return render(request, "authentication/home.html", {'students': documents} )
 
+def scorepage(request):
+    return render(request, "authentication/scorepage.html")
+
 def signup(request):
 
     if request.method == "POST":
@@ -76,3 +79,4 @@ def signin(request):
 def signout(request):
     logout(request)
     return redirect('signin')
+

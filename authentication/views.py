@@ -1,47 +1,78 @@
-from django.shortcuts import redirect, render
-from django.http import HttpResponse
 from django.contrib.auth.models import User
-from django.contrib import messages 
-
+from django.contrib import messages
+from django.db import IntegrityError
+from django.shortcuts import render, redirect
+from django.core.exceptions import ValidationError
+from django.contrib.auth.password_validation import validate_password
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
+from db_connection import student_collection
 # Create your views here.
+
 def home(request):
-    return render(request, "authentication/signin.html")
+     documents = student_collection.find()
 
-def scorepage(request):
-    return render(request, "authentication/scorepage.html")
-
-def signin(request):
-
-    return render(request, "authentication/signin.html")
+     return render(request, "authentication/home.html", {'students': documents} )
 
 def signup(request):
 
     if request.method == "POST":
-
         if 'action' in request.POST and request.POST['action'] == 'cancel':
             return redirect('signin')
-        
-        username = request.POST['username']
-        fname = request.POST['fname']
-        lname = request.POST['lname']
-        email = request.POST['email']
-        password = request.POST['password']
-        cpassword = request.POST['cpassword']
 
-        myuser = User.objects.create_user(username, email, password)
-        myuser.first_name = fname
-        myuser.last_name = lname
+        username = request.POST.get('username')
+        fname = request.POST.get('fname')
+        lname = request.POST.get('lname')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        cpassword = request.POST.get('cpassword')
 
-        myuser.save()
+        if password != cpassword:
+            messages.error(request, "Passwords do not match.")
+            return render(request, "authentication/signup.html")
 
-        messages.success(request, "Your Account has been succesfully created.")
+        if password is not None:
+             try:
+                 validate_password(password)
+             except ValidationError as e:
+                  for error in e.messages:
+                   messages.error(request, error)
 
-        return redirect('signin')
-
+        try:
+            myuser = User.objects.create_user(username=username, email=email, password=password)
+            myuser.first_name = fname
+            myuser.last_name = lname
+            myuser.save()
+            messages.success(request, "Your account has been successfully created.")
+            return redirect('signin')
+        except IntegrityError as e:
+             messages.error(request, "A user with that username already exists.")
+             return render(request, "authentication/signup.html")
+        except Exception as e:
+              messages.error(request, "Error creating account: %s" % str(e))
+              return render(request, "authentication/signup.html")
 
     return render(request, "authentication/signup.html")
 
+def signin(request):
+
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+
+        user = authenticate(username = username, password = password)
+
+        if user is not None:
+            login(request, user)
+            fname = user.first_name
+            documents = student_collection.find()
+            return render(request, "authentication/index.html", {'fname': fname,'students': documents})
+        else:
+            messages.error(request, "Bad Credentials!")
+
+    return render(request, "authentication/signin.html")
 
 
 def signout(request):
-    pass
+    logout(request)
+    return redirect('signin')

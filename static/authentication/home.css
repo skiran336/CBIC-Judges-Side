@@ -8,7 +8,7 @@
 
 .img {
     max-width: 100%;       
-    max-height: 100%;       
+    max-height: 100%;      
 }
 
 .form-container {
@@ -81,18 +81,18 @@
     background-color: #fdb515;
     position: relative; 
     display: flex;
-    justify-content: center; 
-    align-items: center;
-    padding: 0 20px; 
+    justify-content: center; /* Centers content horizontally */
+    align-items: center; /* Centers content vertically */
+    padding: 0 20px; /* Ensures padding on both sides */
 }
 
 .yellow-box a {
     text-decoration: none;
     color: black;
     display: flex;
-    justify-content: center; 
+    justify-content: center; /* Ensures the anchor tag's contents are centered */
     align-items: center;
-    width: 100%; 
+    width: 100%; /* Ensures the anchor tag spans the entire width of the container */
 }
 
 .yellow-box a:hover .text {
@@ -102,9 +102,9 @@
 .yellow-box .text {
     font-weight: bold;
     font-size: 35px;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
+    white-space: nowrap; /* Prevents the text from wrapping */
+    overflow: hidden; /* Prevents text from spilling out */
+    text-overflow: ellipsis; /* Adds ellipsis if the text is too long */
 }
 
 @media (max-width: 768px) {
@@ -114,13 +114,13 @@
 
     .yellow-box .text {
         font-size: 24px; 
-        margin-top: 0; 
+        margin-top: 0; /* Adjust if necessary to center vertically */
     }
 }
 
 @media (max-width: 480px) {
     .yellow-box {
-        height: 50px; 
+        height: 50px; /* Adjust height as needed */
     }
 
     .yellow-box .text {
@@ -129,7 +129,7 @@
 }
 
 .input-box input {
-    width: 100%;
+    width: 80%;
     padding: 8px;
     margin: 5px 0;
     box-sizing: border-box;
@@ -145,12 +145,23 @@
 }
 
 .remember-forgot button {
-    padding: 10px 20px;
+    padding: 10px 40px;
+    margin-right: 100px;
     background-color: #fdb515;
     color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+.remember-forgot button:hover {
+    background-color: #896f18; 
+}
+
+#Cancel{ 
+    background-color: #d3d3d3;
+}
+#Cancel:hover{
+    background-color: #7e7e7e; 
 }
 
 .remember-forgot a {
@@ -165,7 +176,7 @@
 form {
     display: flex;
     flex-direction: column; 
-    width: 60%; 
+    width: 80%; 
     max-width: 500px; 
     padding: 20px;
     background: white; 
@@ -185,3 +196,41 @@ label {
     margin: 0; 
     padding: 10px 0; 
 }
+
+.header {
+    display: flex;
+    justify-content: flex-end;  /* Aligns children (the form) to the right */
+    padding: 10px;  /* Adds some padding around the content */
+    background-color: #f8f9fa;  /* Optional: sets a background color */
+}
+
+.logout-form {
+    margin: 0;  /* Removes any default margin */
+}
+
+.logout-button {
+    display: flex;
+    align-items: right; /* Aligns the icon and text vertically */
+    background-color: transparent; /* Makes the background transparent */
+    border: none; /* Removes the border */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    font-size: 16px; /* Sets the text size */
+    color: #333; /* Sets the text color */
+}
+
+.logout-button:hover {
+    background-color: #e0e0e0; /* Light grey background on hover, similar to Gmail's hover effect */
+}
+
+.logout-icon {
+    width: 24px; /* Sets the width of the icon */
+    height: auto; /* Keeps the aspect ratio */
+    margin-right: 8px; /* Adds space between the icon and text */
+}
+
+
+
+
+
+
+  

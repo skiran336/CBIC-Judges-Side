@@ -1,0 +1,40 @@
+{% load static %}  <!-- Load static is moved under extends -->
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'authentication/home.css' %}">
+</head>
+<body>
+    <div class="black-box">
+        <a href="https://www.umbc.edu/" target="_blank">
+            <img src="https://entrepreneurship.umbc.edu/wp-content/themes/sights/images/apple-touch-icon.png" alt="UMBC Logo"/>
+            <span class='text'>UMBC</span>
+        </a>
+    </div>
+    <div class="yellow-box">
+        <a href="https://entrepreneurship.umbc.edu/" target="_blank">
+            <span class='text'>Alex. Brown Center For Entrepreneurship and Innovation</span>
+        </a>
+    </div>
+    <div class="form-container">
+        {% if user.is_authenticated %}
+        <h1>Welcome {{ user.first_name }}!</h1>
+        
+        <h2>Students List</h2>
+        <ul>
+            {% for student in students %}
+                <li>{{ student.name }} - {{ student.email }}</li>  <!-- Adjust according to your data structure -->
+            {% empty %}
+                <li>No students found.</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    </div>
+</body>
+</html>
+{% endblock %}

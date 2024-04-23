@@ -1,14 +1,17 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
     <link rel="stylesheet" type="text/css" href="{% static 'authentication/signup.css' %}">
 </head>
 <body>
     <div class="black-box">
-        <a href = "https://www.umbc.edu/" target='blank'>
-        <img src = "https://entrepreneurship.umbc.edu/wp-content/themes/sights/images/apple-touch-icon.png" />
-        <span class='text'>UMBC</span>
+        <a href="https://www.umbc.edu/" target="_blank">
+            <img src="https://entrepreneurship.umbc.edu/wp-content/themes/sights/images/apple-touch-icon.png" alt="UMBC Logo">
+            <span class='text'>UMBC</span>
         </a>
     </div>
     <div class="yellow-box">
@@ -17,43 +20,43 @@
         </a>
     </div>
     <div class="form-container">
-        <img src = "https://entrepreneurship.umbc.edu/wp-content/uploads/sites/39/2022/05/new-CBIC-Logo-1-300x243.png" alt="External Source" />
+        <img src="https://entrepreneurship.umbc.edu/wp-content/uploads/sites/39/2022/05/new-CBIC-Logo-1-300x243.png" alt="CBIC Logo">
     </div>
-    <div class = "form-container">
-        <form action ="/signup" method="post">
+    <div class="form-container">
+        <form action="{% url 'signup' %}" method="post">
             {% csrf_token %}
             <div>
-                <p class = "centered-heading">Sign Up</p>
+                <p class="centered-heading">Sign Up</p>
             </div>
             <div class="input-box">
-                <label for="">Username</label><br>
-                <input type="username" id="username" name="username" placeholder="Enter Input Here" required>
+                <label for="username">Username</label><br>
+                <input type="text" id="username" name="username" placeholder="Enter Username Here" required>
             </div>
             <div class="input-box">
-                <label for="">First Name</label><br>
-                <input type="text" id="fname" name="fname" placeholder="Enter Input Here" required>
+                <label for="fname">First Name</label><br>
+                <input type="text" id="fname" name="fname" placeholder="Enter First Name Here" required>
             </div>
             <div class="input-box">
-                <label for="">Last Name</label><br>
-                <input type="text" id="lname" name="lname" placeholder="Enter Input Here" required>
+                <label for="lname">Last Name</label><br>
+                <input type="text" id="lname" name="lname" placeholder="Enter Last Name Here" required>
             </div>
             <div class="input-box">
-                <label for="">Email Address</label><br>
-                <input type="email" id="email" name="email" placeholder="Enter Input Here" required>
+                <label for="email">Email Address</label><br>
+                <input type="email" id="email" name="email" placeholder="Enter Email Here" required>
             </div>
             <div class="input-box">
                 <label for="password">Password</label><br>
-                <input type="password" id="password" name="password" placeholder="Enter Input Here" required>
+                <input type="password" id="password" name="password" placeholder="Enter Password Here" required>
             </div>
             <div class="input-box">
-                <label for="password">Confirm Password</label><br>
-                <input type="password" id="cpassword" name="cpassword" placeholder="Enter Input Here" required>
+                <label for="cpassword">Confirm Password</label><br>
+                <input type="password" id="cpassword" name="cpassword" placeholder="Confirm Password Here" required>
             </div>
             <div class="remember-forgot">
-                <button  id="Cancel" value="cancel">Cancel</button>
+                <button type="button" id="cancel" onclick="location.href='{% url 'signin' %}'">Cancel</button>
                 <button type="submit">Signup</button>
             </div>
         </form>
-        </div>
+    </div>
 </body>
 </html>

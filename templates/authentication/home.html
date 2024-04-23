@@ -24,15 +24,18 @@
     <div class="form-container">
         {% if user.is_authenticated %}
         <h1>Welcome {{ user.first_name }}!</h1>
-        
+        <br>
         <h2>Students List</h2>
+    <br></br>
+        <div>
         <ul>
             {% for student in students %}
-                <li>{{ student.name }} - {{ student.email }}</li>  <!-- Adjust according to your data structure -->
+                <li>{{ student.track }} : {{ student.name }}</li>  
             {% empty %}
                 <li>No students found.</li>
             {% endfor %}
         </ul>
+        </div>
         {% endif %}
     </div>
 </body>

@@ -66,7 +66,7 @@ def signin(request):
             login(request, user)
             fname = user.first_name
             documents = student_collection.find()
-            return render(request, "authentication/index.html", {'fname': fname,'students': documents})
+            return render(request, "authentication/home.html", {'fname': fname,'students': documents})
         else:
             messages.error(request, "Bad Credentials!")
 

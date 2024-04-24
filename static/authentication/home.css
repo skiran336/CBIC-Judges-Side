@@ -229,6 +229,69 @@ label {
     background-color: #e8e8e8;
 }
 
+/* General body and font styles */
+body {
+    font-family: 'Arial', sans-serif; /* Ensures text is clearly readable */
+    background-color: #f4f4f4; /* Light grey background for slight contrast */
+    padding: 20px; /* Adds some space around the content */
+}
+
+/* Styles for accordion headers */
+.accordion-header {
+    background-color: #007BFF; /* Bright blue background for the header */
+    color: white; /* White text color */
+    cursor: pointer; /* Cursor indicates the element is clickable */
+    padding: 15px 20px; /* Padding inside the header */
+    width: 100%; /* Ensures the header stretches full container width */
+    border: none; /* No border for a cleaner look */
+    outline: none; /* Removes the outline to prevent visual focus */
+    text-align: left; /* Aligns the text to the left */
+    border-top: 1px solid #ffffff; /* Adds a subtle top border for definition */
+    font-size: 18px; /* Increases the font size for readability */
+    transition: background-color 0.4s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Style for hovering over accordion headers */
+.accordion-header:hover {
+    background-color: #0056b3; /* Darker blue on hover for interaction feedback */
+}
+
+/* Initial style for accordion panels */
+.panel {
+    padding: 0 18px; /* Padding on the sides for content inside the panel */
+    background-color: white; /* White background for the content panel */
+    max-height: 0; /* Initially set to 0 to hide the content */
+    overflow: hidden; /* Hides any content that overflows the panel */
+    transition: max-height 0.6s ease-out; /* Smooth transition for expanding and collapsing */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-left: 3px solid #007BFF; /* Adds a left border for style continuity with the header */
+}
+
+/* Style for content within the panel */
+.panel p {
+    font-size: 16px; /* Sets the size of the text within the panel */
+    color: #333; /* Dark gray color for the text for readability */
+    margin-top: 10px; /* Adds space above each paragraph */
+}
+
+/* Additional styling for lists within the panel */
+.panel ul {
+    list-style-type: none; /* Removes bullet points from lists */
+    padding: 0; /* Removes padding around the list */
+}
+
+.panel li {
+    padding: 8px 0; /* Adds padding around each list item */
+    border-bottom: 1px solid #ddd; /* Adds a separator between items */
+}
+
+/* Ensuring accordion header takes full width of its container */
+.accordion {
+    width: 100%; /* Ensures the accordion stretches to full width */
+    box-sizing: border-box; /* Adjusts box-sizing to include padding in width calculation */
+}
+
+
 
 
 

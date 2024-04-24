@@ -11,7 +11,7 @@
 <body>
     <div class="black-box">
         <a href="https://www.umbc.edu/" target="_blank">
-            <img src="https://entrepreneurship.umbc.edu/wp-content/themes/sights/images/apple-touch-icon.png" alt="UMBC Logo"/>
+            <img src="https://entrepreneurship.umbc.edu/wp-content/themes/sights/images/apple-touch-icon.png" alt="UMBC Logo" />
             <span class='text'>UMBC</span>
         </a>
     </div>
@@ -20,7 +20,6 @@
             <span class='text'>Alex. Brown Center For Entrepreneurship and Innovation</span>
         </a>
     </div>
-    <!-- Logout Button below the yellow box, fixed to the right -->
     <div class="logout-container">
         <a href="{% url 'signout' %}">
             <img src="{% static 'cbic.png' %}" alt="Logout" />
@@ -49,16 +48,18 @@
                         <li>{{ student.question4 }}</li>
                     </ul>
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
-                    <p><strong>Created At:</strong> {{ student.createdAt }}</p>
-                    <p><strong>Updated At:</strong> {{ student.updatedAt }}</p>
                 </div>
             </div>
+            {% empty %}
+            <p>No students found.</p>
             {% endfor %}
         </div>
+        {% else %}
+        <p>You are not logged in.</p>
         {% endif %}
     </div>
     <div>
-        <p class = "scorepage">To navigate to scorepage click <a href="{% url 'scorepage' %}">here</a> to start grading</p>
+        <p class="scorepage">To navigate to the scorepage click <a href="{% url 'scorepage' %}">here</a> to start grading.</p>
     </div>
 </body>
 </html>

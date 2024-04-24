@@ -286,10 +286,30 @@ body {
 }
 
 /* Ensuring accordion header takes full width of its container */
-.accordion {
-    width: 100%; /* Ensures the accordion stretches to full width */
-    box-sizing: border-box; /* Adjusts box-sizing to include padding in width calculation */
+
+.accordion-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distributes space between accordions */
 }
+
+
+.accordion-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Adjust this as needed to align accordions */
+}
+
+.accordion {
+    flex: 1 1 48%; /* Adjusts the accordion to take roughly half the line */
+    margin-bottom: 10px; /* Provides space between rows of accordions */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+}
+
+.accordion-header, .panel {
+    width: 100%; /* Full width to the parent container */
+}
+
 
 
 

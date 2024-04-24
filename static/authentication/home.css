@@ -333,7 +333,7 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.6s ease-out;
-    border-left: 3px solid #007bff; /* Stylistic choice, can be removed or changed */
+    border-left: 3px solid #fdb515; /* Stylistic choice, can be removed or changed */
 }
 
 /* Resetting list styles within panels */

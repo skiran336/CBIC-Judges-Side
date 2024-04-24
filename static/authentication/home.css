@@ -316,7 +316,7 @@ body {
 }
 
 .accordion-header {
-    background-color: white; /* Example blue, can be changed as per design needs */
+    background-color: #fdb515; 
     color: white;
     cursor: pointer;
     padding: 15px;
@@ -328,7 +328,7 @@ body {
 }
 
 .accordion-header:hover {
-    background-color: #0056b3; /* Darker shade of blue for hover effect */
+    background-color: #ffae00; 
 }
 
 .panel {

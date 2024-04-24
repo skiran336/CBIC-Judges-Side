@@ -316,7 +316,7 @@ body {
 }
 
 .accordion-header {
-    background-color: #007bff; /* Example blue, can be changed as per design needs */
+    background-color: white; /* Example blue, can be changed as per design needs */
     color: white;
     cursor: pointer;
     padding: 15px;

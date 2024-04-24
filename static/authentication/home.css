@@ -294,21 +294,60 @@ body {
 }
 
 
+/* Additional and updated styles for accordion layout */
 .accordion-row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between; /* Adjust this as needed to align accordions */
+    justify-content: space-between; /* Maintains space between flex items and edges */
+    margin: 0 -15px; /* Adjusts margin to allow for padding reset on child elements */
 }
 
 .accordion {
-    flex: 1 1 48%; /* Adjusts the accordion to take roughly half the line */
-    margin-bottom: 10px; /* Provides space between rows of accordions */
-    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    flex: 1 1 calc(50% - 30px); /* Calculates width to account for margins, adjusting the 50% */
+    margin: 0 15px 20px; /* 15px horizontal margin creates gap, 20px bottom margin for space between rows */
+    box-sizing: border-box; /* Includes padding and border in width/height calculation */
+    padding: 10px; /* Optional: adds padding inside each accordion for better content spacing */
+    background-color: #f9f9f9; /* Optional: background color for each accordion for better contrast */
+    border: 1px solid #ddd; /* Optional: adds a light border around each accordion */
 }
 
-.accordion-header, .panel {
-    width: 100%; /* Full width to the parent container */
+.accordion-header {
+    background-color: #007bff; /* Example blue, can be changed as per design needs */
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    transition: background-color 0.3s ease-in-out;
 }
+
+.accordion-header:hover {
+    background-color: #0056b3; /* Darker shade of blue for hover effect */
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-out;
+    border-left: 3px solid #007bff; /* Stylistic choice, can be removed or changed */
+}
+
+/* Resetting list styles within panels */
+.panel ul {
+    list-style-type: none; /* Removes bullets from list items */
+    padding: 0;
+    margin: 0;
+}
+
+.panel li {
+    padding: 8px 0; /* Vertical padding for each list item */
+    border-bottom: 1px solid #eee; /* Subtle separator between items */
+}
+
 
 
 

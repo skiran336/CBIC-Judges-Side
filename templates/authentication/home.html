@@ -1,5 +1,4 @@
-{% load static %}  <!-- Load static is moved under extends -->
-
+{% load static %}
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
@@ -21,20 +20,40 @@
             <span class='text'>Alex. Brown Center For Entrepreneurship and Innovation</span>
         </a>
     </div>
+    <!-- Logout Button below the yellow box, fixed to the right -->
+    <div class="logout-container">
+        <a href="{% url 'logout' %}">
+            <img src="{% static 'cbic.png' %}" alt="Logout" />
+            Logout
+        </a>
+    </div>
     <div class="form-container">
         {% if user.is_authenticated %}
         <h1>Welcome {{ user.first_name }}!</h1>
-        <br>
-        <h2>Students List</h2>
-    <br></br>
         <div>
-        <ul>
             {% for student in students %}
-                <li>{{ student.track }} : {{ student.name }}</li>  
-            {% empty %}
-                <li>No students found.</li>
+            <div class="accordion">
+                <button class="accordion-header">{{ student.ideaName }}</button>
+                <div class="panel">
+                    <p><strong>Name:</strong> {{ student.name }}</p>
+                    <p><strong>Major:</strong> {{ student.major }}</p>
+                    <p><strong>Email:</strong> {{ student.email }}</p>
+                    <p><strong>Phone Number:</strong> {{ student.phoneNumber }}</p>
+                    <p><strong>Class Standing:</strong> {{ student.classStanding }}</p>
+                    <p><strong>Track:</strong> {{ student.track }}</p>
+                    <p><strong>Questions:</strong></p>
+                    <ul>
+                        <li>{{ student.question1 }}</li>
+                        <li>{{ student.question2 }}</li>
+                        <li>{{ student.question3 }}</li>
+                        <li>{{ student.question4 }}</li>
+                    </ul>
+                    <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
+                    <p><strong>Created At:</strong> {{ student.createdAt }}</p>
+                    <p><strong>Updated At:</strong> {{ student.updatedAt }}</p>
+                </div>
+            </div>
             {% endfor %}
-        </ul>
         </div>
         {% endif %}
     </div>

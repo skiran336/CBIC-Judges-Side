@@ -204,29 +204,31 @@ label {
     background-color: #f8f9fa;  /* Optional: sets a background color */
 }
 
-.logout-form {
-    margin: 0;  /* Removes any default margin */
+.logout-container {
+    margin: 20px 0; /* Add some vertical spacing */
+    text-align: center; /* Center-align the button */
 }
 
-.logout-button {
-    display: flex;
-    align-items: right; /* Aligns the icon and text vertically */
-    background-color: transparent; /* Makes the background transparent */
-    border: none; /* Removes the border */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    font-size: 16px; /* Sets the text size */
-    color: #333; /* Sets the text color */
+.logout-container a {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
 }
 
-.logout-button:hover {
-    background-color: #e0e0e0; /* Light grey background on hover, similar to Gmail's hover effect */
+.logout-container img {
+    width: 24px; /* Adjust size as necessary */
+    margin-right: 8px; /* Space between icon and text */
 }
 
-.logout-icon {
-    width: 24px; /* Sets the width of the icon */
-    height: auto; /* Keeps the aspect ratio */
-    margin-right: 8px; /* Adds space between the icon and text */
+.logout-container a:hover {
+    background-color: #e8e8e8;
 }
+
 
 
 

@@ -26,9 +26,9 @@
             Logout
         </a>
     </div>
+    <h1>Welcome {{ user.first_name }}!</h1><br>
     <div class="form-container">
         {% if user.is_authenticated %}
-        <h1>Welcome {{ user.first_name }}!</h1><br>
         {% for student in students %}
         <div class="accordion">
             <button class="accordion-header">{{ student.ideaName }}</button>

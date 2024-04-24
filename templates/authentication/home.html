@@ -28,7 +28,7 @@
     </div>
     <div class="form-container">
         {% if user.is_authenticated %}
-        <h1>Welcome {{ user.first_name }}!</h1>
+        <h1>Welcome {{ user.first_name }}!</h1><br>
         {% for student in students %}
         <div class="accordion">
             <button class="accordion-header">{{ student.ideaName }}</button>
@@ -59,6 +59,22 @@
     <div class="score-page">
         <p>To navigate to the score page, click <a href="{% url 'scorepage' %}">here</a> to start grading.</p>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var acc = document.getElementsByClassName("accordion-header");
+            for (var i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
 {% endblock %}

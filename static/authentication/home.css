@@ -85,18 +85,18 @@
     background-color: #fdb515;
     position: relative; 
     display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    padding: 0 20px; /* Ensures padding on both sides */
+    justify-content: center; 
+    align-items: center; 
+    padding: 0 20px; 
 }
 
 .yellow-box a {
     text-decoration: none;
     color: black;
     display: flex;
-    justify-content: center; /* Ensures the anchor tag's contents are centered */
+    justify-content: center;
     align-items: center;
-    width: 100%; /* Ensures the anchor tag spans the entire width of the container */
+    width: 100%; 
 }
 
 .yellow-box a:hover .text {
@@ -106,9 +106,9 @@
 .yellow-box .text {
     font-weight: bold;
     font-size: 35px;
-    white-space: nowrap; /* Prevents the text from wrapping */
-    overflow: hidden; /* Prevents text from spilling out */
-    text-overflow: ellipsis; /* Adds ellipsis if the text is too long */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
 }
 
 @media (max-width: 768px) {
@@ -118,7 +118,7 @@
 
     .yellow-box .text {
         font-size: 24px; 
-        margin-top: 0; /* Adjust if necessary to center vertically */
+        margin-top: 0; 
     }
 }
 
@@ -242,7 +242,7 @@ body {
 
 /* Styles for accordion headers */
 .accordion-header {
-    background-color: #007BFF; /* Bright blue background for the header */
+    background-color: #fdb515; /* Bright blue background for the header */
     color: white; /* White text color */
     cursor: pointer; /* Cursor indicates the element is clickable */
     padding: 15px 20px; /* Padding inside the header */
@@ -257,7 +257,7 @@ body {
 
 /* Style for hovering over accordion headers */
 .accordion-header:hover {
-    background-color: #0056b3; /* Darker blue on hover for interaction feedback */
+    background-color: #ffae00; /* Darker blue on hover for interaction feedback */
 }
 
 /* Initial style for accordion panels */

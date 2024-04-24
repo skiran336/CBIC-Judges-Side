@@ -1,3 +1,16 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif; /* Optional: sets the font style */
+}
+
+.container {
+    text-align: center; /* Ensures text within the div is centered */
+}
+
 .img-container {
     display: flex;
     justify-content: center; 

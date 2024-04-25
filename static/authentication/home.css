@@ -1,3 +1,7 @@
+.container {
+    text-align: center; 
+}
+
 .img-container {
     display: flex;
     justify-content: center; 
@@ -81,18 +85,18 @@
     background-color: #fdb515;
     position: relative; 
     display: flex;
-    justify-content: center; /* Centers content horizontally */
-    align-items: center; /* Centers content vertically */
-    padding: 0 20px; /* Ensures padding on both sides */
+    justify-content: center; 
+    align-items: center; 
+    padding: 0 20px; 
 }
 
 .yellow-box a {
     text-decoration: none;
     color: black;
     display: flex;
-    justify-content: center; /* Ensures the anchor tag's contents are centered */
+    justify-content: center;
     align-items: center;
-    width: 100%; /* Ensures the anchor tag spans the entire width of the container */
+    width: 100%; 
 }
 
 .yellow-box a:hover .text {
@@ -102,9 +106,9 @@
 .yellow-box .text {
     font-weight: bold;
     font-size: 35px;
-    white-space: nowrap; /* Prevents the text from wrapping */
-    overflow: hidden; /* Prevents text from spilling out */
-    text-overflow: ellipsis; /* Adds ellipsis if the text is too long */
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
 }
 
 @media (max-width: 768px) {
@@ -114,7 +118,7 @@
 
     .yellow-box .text {
         font-size: 24px; 
-        margin-top: 0; /* Adjust if necessary to center vertically */
+        margin-top: 0; 
     }
 }
 
@@ -204,29 +208,153 @@ label {
     background-color: #f8f9fa;  /* Optional: sets a background color */
 }
 
-.logout-form {
-    margin: 0;  /* Removes any default margin */
+.logout-container {
+    margin: 20px 0; /* Add some vertical spacing */
+    text-align: center; /* Center-align the button */
 }
 
-.logout-button {
+.logout-container a {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f8f8f8;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.logout-container img {
+    width: 24px; /* Adjust size as necessary */
+    margin-right: 8px; /* Space between icon and text */
+}
+
+.logout-container a:hover {
+    background-color: #e8e8e8;
+}
+
+/* General body and font styles */
+body {
+    font-family: 'Arial', sans-serif; /* Ensures text is clearly readable */
+    background-color: #f4f4f4; /* Light grey background for slight contrast */
+    padding: 20px; /* Adds some space around the content */
+}
+
+/* Styles for accordion headers */
+.accordion-header {
+    background-color: #fdb515; /* Bright blue background for the header */
+    color: white; /* White text color */
+    cursor: pointer; /* Cursor indicates the element is clickable */
+    padding: 15px 20px; /* Padding inside the header */
+    width: 100%; /* Ensures the header stretches full container width */
+    border: none; /* No border for a cleaner look */
+    outline: none; /* Removes the outline to prevent visual focus */
+    text-align: left; /* Aligns the text to the left */
+    border-top: 1px solid #ffffff; /* Adds a subtle top border for definition */
+    font-size: 18px; /* Increases the font size for readability */
+    transition: background-color 0.4s, color 0.3s; /* Smooth transition for hover effects */
+}
+
+/* Style for hovering over accordion headers */
+.accordion-header:hover {
+    background-color: #ffae00; /* Darker blue on hover for interaction feedback */
+}
+
+/* Initial style for accordion panels */
+.panel {
+    padding: 0 18px; /* Padding on the sides for content inside the panel */
+    background-color: white; /* White background for the content panel */
+    max-height: 0; /* Initially set to 0 to hide the content */
+    overflow: hidden; /* Hides any content that overflows the panel */
+    transition: max-height 0.6s ease-out; /* Smooth transition for expanding and collapsing */
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    border-left: 3px solid #007BFF; /* Adds a left border for style continuity with the header */
+}
+
+/* Style for content within the panel */
+.panel p {
+    font-size: 16px; /* Sets the size of the text within the panel */
+    color: #333; /* Dark gray color for the text for readability */
+    margin-top: 10px; /* Adds space above each paragraph */
+}
+
+/* Additional styling for lists within the panel */
+.panel ul {
+    list-style-type: none; /* Removes bullet points from lists */
+    padding: 0; /* Removes padding around the list */
+}
+
+.panel li {
+    padding: 8px 0; /* Adds padding around each list item */
+    border-bottom: 1px solid #ddd; /* Adds a separator between items */
+}
+
+/* Ensuring accordion header takes full width of its container */
+
+.accordion-container {
     display: flex;
-    align-items: right; /* Aligns the icon and text vertically */
-    background-color: transparent; /* Makes the background transparent */
-    border: none; /* Removes the border */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    font-size: 16px; /* Sets the text size */
-    color: #333; /* Sets the text color */
+    flex-wrap: wrap;
+    justify-content: space-between; /* Distributes space between accordions */
 }
 
-.logout-button:hover {
-    background-color: #e0e0e0; /* Light grey background on hover, similar to Gmail's hover effect */
+
+/* Additional and updated styles for accordion layout */
+.accordion-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Maintains space between flex items and edges */
+    margin: 0 -15px; /* Adjusts margin to allow for padding reset on child elements */
 }
 
-.logout-icon {
-    width: 24px; /* Sets the width of the icon */
-    height: auto; /* Keeps the aspect ratio */
-    margin-right: 8px; /* Adds space between the icon and text */
+.accordion {
+    flex: 1 1 calc(50% - 30px); /* Calculates width to account for margins, adjusting the 50% */
+    margin: 0 15px 20px; /* 15px horizontal margin creates gap, 20px bottom margin for space between rows */
+    box-sizing: border-box; /* Includes padding and border in width/height calculation */
+    padding: 10px; /* Optional: adds padding inside each accordion for better content spacing */
+    background-color: #f9f9f9; /* Optional: background color for each accordion for better contrast */
+    border: 1px solid #ddd; /* Optional: adds a light border around each accordion */
 }
+
+.accordion-header {
+    background-color: #fdb515; 
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    width: 100%;
+    border: none;
+    outline: none;
+    text-align: left;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.accordion-header:hover {
+    background-color: #ffae00; 
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-out;
+    border-left: 3px solid #fdb515; /* Stylistic choice, can be removed or changed */
+}
+
+/* Resetting list styles within panels */
+.panel ul {
+    list-style-type: none; /* Removes bullets from list items */
+    padding: 0;
+    margin: 0;
+}
+
+.panel li {
+    padding: 8px 0; /* Vertical padding for each list item */
+    border-bottom: 1px solid #eee; /* Subtle separator between items */
+}
+
+
+
+
 
 
 

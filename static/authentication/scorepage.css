@@ -197,14 +197,45 @@ label {
 
 .accordion {
     cursor: pointer;
-    padding: 10px;
-    border: none;
+    width: 100%;
+    padding: 15px;
+    text-align: left;
     outline: none;
+    border: none;
     transition: background-color 0.3s;
+    background-color: #f1f1f1;
+    font-weight: bold;
+}
+
+.accordion:hover {
+    background-color: #e0e0e0;
 }
 
 .panel {
     display: none;
+    padding: 15px;
     overflow: hidden;
-    padding: 10px;
+    background-color: #fafafa;
+    border-top: 1px solid #d3d3d3;
+}
+
+.question-container {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.panel-content {
+    display: flex;
+    align-items: center;
+}
+
+.panel-content input[type="radio"] {
+    margin-right: 10px;
+}
+
+.submit {
+    margin-top: 20px;
 }

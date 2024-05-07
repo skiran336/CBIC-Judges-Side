@@ -1,93 +1,66 @@
 .container {
-    text-align: center; 
+    text-align: center;
 }
 
-.img-container {
+.img-container,
+.form-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
-    width: 100vw;     
+    width: 100vw;
     padding-top: 10px;
 }
 
 .img {
-    max-width: 100%;       
-    max-height: 100%;      
+    max-width: 100%;
+    max-height: 100%;
 }
 
-.form-container {
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    width: 100vw; 
-    padding-top: 10px;
-}
-
-
+/* Black and Yellow Box styles */
 .black-box {
-    width: 100vw; 
-    height: 120px; 
+    width: 100vw;
+    height: 120px;
     background-color: black;
-    position: relative; 
-  }
-  
-  .black-box img {
-    width: 10%; 
-    height: 70%; 
+    position: relative;
+}
+
+.black-box img {
+    width: 10%;
+    height: 70%;
     object-fit: contain;
-    position: absolute; 
+    position: absolute;
     margin-left: 200px;
-    margin-top: 17px  ;
+    margin-top: 17px;
     top: 0;
     left: 0;
-  }
-  .black-box a {
+}
+
+.black-box a {
     text-decoration: none;
     color: #fdb515;
     display: flex;
     align-items: center;
-  }
-  .black-box a:hover .text {
-    text-decoration: none;
+}
+
+.black-box a:hover .text {
     color: white;
-    display: flex;
-    align-items: center;
-  }
-  .black-box .text {
+}
+
+.black-box .text {
     font-family: 'Sans-serif';
     font-size: 80px;
-    margin-left: 330px; 
+    margin-left: 330px;
     margin-top: 16px;
-  }
-  @media (max-width: 768px) {
-    .black-box {
-        height: auto; 
-        padding: 20px 0; 
-    }
-    
-    .black-box img {
-        width: 60px; 
-        height: auto; 
-        margin-left: 20px; 
-        margin-top: 0;
-    }
-    
-    .black-box .text {
-        font-size: 40px; 
-        margin-left: 100px; 
-        margin-top: 0; 
-    }
 }
-  
+
 .yellow-box {
-    width: 100vw; 
-    height: 80px; 
+    width: 100vw;
+    height: 80px;
     background-color: #fdb515;
-    position: relative; 
     display: flex;
-    justify-content: center; 
-    align-items: center; 
-    padding: 0 20px; 
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
 }
 
 .yellow-box a {
@@ -96,7 +69,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%; 
+    width: 100%;
 }
 
 .yellow-box a:hover .text {
@@ -106,37 +79,53 @@
 .yellow-box .text {
     font-weight: bold;
     font-size: 35px;
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
+/* Responsive adjustments */
 @media (max-width: 768px) {
+    .black-box {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .black-box img {
+        width: 60px;
+        height: auto;
+        margin-left: 20px;
+    }
+
+    .black-box .text {
+        font-size: 40px;
+        margin-left: 100px;
+    }
+
     .yellow-box {
         height: 60px;
     }
 
     .yellow-box .text {
-        font-size: 24px; 
-        margin-top: 0; 
+        font-size: 24px;
     }
 }
 
 @media (max-width: 480px) {
     .yellow-box {
-        height: 50px; /* Adjust height as needed */
+        height: 50px;
     }
 
     .yellow-box .text {
-        font-size: 18px; 
+        font-size: 18px;
     }
 }
 
+/* Form elements and Logout button */
 .input-box input {
     width: 80%;
     padding: 8px;
     margin: 5px 0;
-    box-sizing: border-box;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
@@ -157,15 +146,17 @@
     border-radius: 4px;
     cursor: pointer;
 }
+
 .remember-forgot button:hover {
-    background-color: #896f18; 
+    background-color: #896f18;
 }
 
-#Cancel{ 
+#Cancel {
     background-color: #d3d3d3;
 }
-#Cancel:hover{
-    background-color: #7e7e7e; 
+
+#Cancel:hover {
+    background-color: #7e7e7e;
 }
 
 .remember-forgot a {
@@ -179,38 +170,39 @@
 
 form {
     display: flex;
-    flex-direction: column; 
-    width: 80%; 
-    max-width: 500px; 
+    flex-direction: column;
+    width: 80%;
+    max-width: 500px;
     padding: 20px;
-    background: white; 
-    border-radius: 10px; 
+    background: white;
+    border-radius: 10px;
 }
+
 label {
-    margin-bottom: 2px; 
-    font-size: 16px; 
-    color: #333; 
-    font-weight: bold; 
+    margin-bottom: 2px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
 }
 
 .centered-heading {
-    font-size: 24px; 
-    font-weight: bold; 
-    text-align: center; 
-    margin: 0; 
-    padding: 10px 0; 
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
 }
 
 .header {
     display: flex;
-    justify-content: flex-end;  /* Aligns children (the form) to the right */
-    padding: 10px;  /* Adds some padding around the content */
-    background-color: #f8f9fa;  /* Optional: sets a background color */
+    justify-content: flex-end;
+    padding: 10px;
+    background-color: #f8f9fa;
 }
 
 .logout-container {
-    margin: 20px 0; /* Add some vertical spacing */
-    text-align: center; /* Center-align the button */
+    margin: 20px 0;
+    text-align: center;
 }
 
 .logout-container a {
@@ -225,98 +217,17 @@ label {
 }
 
 .logout-container img {
-    width: 24px; /* Adjust size as necessary */
-    margin-right: 8px; /* Space between icon and text */
+    width: 24px;
+    margin-right: 8px;
 }
 
 .logout-container a:hover {
     background-color: #e8e8e8;
 }
 
-/* General body and font styles */
-body {
-    font-family: 'Arial', sans-serif; /* Ensures text is clearly readable */
-    background-color: #f4f4f4; /* Light grey background for slight contrast */
-    padding: 20px; /* Adds some space around the content */
-}
-
-/* Styles for accordion headers */
+/* Accordion styles */
 .accordion-header {
-    background-color: #fdb515; /* Bright blue background for the header */
-    color: white; /* White text color */
-    cursor: pointer; /* Cursor indicates the element is clickable */
-    padding: 15px 20px; /* Padding inside the header */
-    width: 100%; /* Ensures the header stretches full container width */
-    border: none; /* No border for a cleaner look */
-    outline: none; /* Removes the outline to prevent visual focus */
-    text-align: left; /* Aligns the text to the left */
-    border-top: 1px solid #ffffff; /* Adds a subtle top border for definition */
-    font-size: 18px; /* Increases the font size for readability */
-    transition: background-color 0.4s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-/* Style for hovering over accordion headers */
-.accordion-header:hover {
-    background-color: #ffae00; /* Darker blue on hover for interaction feedback */
-}
-
-/* Initial style for accordion panels */
-.panel {
-    padding: 0 18px; /* Padding on the sides for content inside the panel */
-    background-color: white; /* White background for the content panel */
-    max-height: 0; /* Initially set to 0 to hide the content */
-    overflow: hidden; /* Hides any content that overflows the panel */
-    transition: max-height 0.6s ease-out; /* Smooth transition for expanding and collapsing */
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    border-left: 3px solid #007BFF; /* Adds a left border for style continuity with the header */
-}
-
-/* Style for content within the panel */
-.panel p {
-    font-size: 16px; /* Sets the size of the text within the panel */
-    color: #333; /* Dark gray color for the text for readability */
-    margin-top: 10px; /* Adds space above each paragraph */
-}
-
-/* Additional styling for lists within the panel */
-.panel ul {
-    list-style-type: none; /* Removes bullet points from lists */
-    padding: 0; /* Removes padding around the list */
-}
-
-.panel li {
-    padding: 8px 0; /* Adds padding around each list item */
-    border-bottom: 1px solid #ddd; /* Adds a separator between items */
-}
-
-/* Ensuring accordion header takes full width of its container */
-
-.accordion-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Distributes space between accordions */
-}
-
-
-/* Additional and updated styles for accordion layout */
-.accordion-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between; /* Maintains space between flex items and edges */
-    margin: 0 -15px; /* Adjusts margin to allow for padding reset on child elements */
-}
-
-.accordion {
-    flex: 1 1 calc(50% - 30px); /* Calculates width to account for margins, adjusting the 50% */
-    margin: 0 15px 20px; /* 15px horizontal margin creates gap, 20px bottom margin for space between rows */
-    box-sizing: border-box; /* Includes padding and border in width/height calculation */
-    padding: 10px; /* Optional: adds padding inside each accordion for better content spacing */
-    background-color: #f9f9f9; /* Optional: background color for each accordion for better contrast */
-    border: 1px solid #ddd; /* Optional: adds a light border around each accordion */
-}
-
-.accordion-header {
-    background-color: #fdb515; 
+    background-color: #fdb515;
     color: white;
     cursor: pointer;
     padding: 15px;
@@ -328,7 +239,7 @@ body {
 }
 
 .accordion-header:hover {
-    background-color: #ffae00; 
+    background-color: #ffae00;
 }
 
 .panel {
@@ -337,28 +248,23 @@ body {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.6s ease-out;
-    border-left: 3px solid #fdb515; /* Stylistic choice, can be removed or changed */
+    border-left: 3px solid #fdb515;
 }
 
-/* Resetting list styles within panels */
 .panel ul {
-    list-style-type: none; /* Removes bullets from list items */
+    list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
 .panel li {
-    padding: 8px 0; /* Vertical padding for each list item */
-    border-bottom: 1px solid #eee; /* Subtle separator between items */
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
 }
 
-
-
-
-
-
-
-
-
-
-  
+.accordion {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+}

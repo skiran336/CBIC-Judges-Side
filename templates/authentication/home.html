@@ -2,14 +2,12 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome Page</title>
     <link rel="stylesheet" type="text/css" href="{% static 'authentication/home.css' %}">
 </head>
-
 <body>
     <div class="black-box">
         <a href="https://www.umbc.edu/" target="_blank">
@@ -33,24 +31,29 @@
     </div>
     <div class="form-container">
         {% if user.is_authenticated %}
-        <div class="accordion">
-            <button class="accordion-header">Student Information</button>
-            <div class="panel">
-                <p><strong>Name:</strong> {{ student.name }}</p>
-                <p><strong>Major:</strong> {{ student.major }}</p>
-                <p><strong>Email:</strong> {{ student.email }}</p>
-                <p><strong>Phone Number:</strong> {{ student.phoneNumber }}</p>
-                <p><strong>Class Standing:</strong> {{ student.classStanding }}</p>
-                <p><strong>Track:</strong> {{ student.track }}</p>
-                <p><strong>Questions:</strong></p>
-                <ul>
-                    <li>{{ student.question1 }}</li>
-                    <li>{{ student.question2 }}</li>
-                    <li>{{ student.question3 }}</li>
-                    <li>{{ student.question4 }}</li>
-                </ul>
-                <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
+        <div class="accordion-container">
+            {% for student in students %}
+            <div class="accordion">
+                <button class="accordion-header">{{ student.ideaName }}</button>
+                <div class="panel">
+                    <p><strong>Name:</strong> {{ student.name }}</p>
+                    <p><strong>Major:</strong> {{ student.major }}</p>
+                    <p><strong>Email:</strong> {{ student.email }}</p>
+                    <p><strong>Phone Number:</strong> {{ student.phoneNumber }}</p>
+                    <p><strong>Class Standing:</strong> {{ student.classStanding }}</p>
+                    <p><strong>Track:</strong> {{ student.track }}</p>
+                    <p><strong>Questions:</strong></p>
+                    <ul>
+                        <li>{{ student.question1 }}</li>
+                        <li>{{ student.question2 }}</li>
+                        <li>{{ student.question3 }}</li>
+                        <li>{{ student.question4 }}</li>
+                    </ul>
+                    <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
+                </div>
             </div>
+            {% endfor %}
+            {% endfor %}
         </div>
         {% else %}
         <p>You are not logged in.</p>
@@ -58,19 +61,20 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var accHeader = document.querySelector(".accordion-header");
-            accHeader.addEventListener("click", function () {
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
-            });
+            var acc = document.getElementsByClassName("accordion-header");
+            for (var i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
+                });
+            }
         });
     </script>
-
 </body>
-
 </html>
 {% endblock %}

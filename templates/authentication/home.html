@@ -55,7 +55,7 @@
                     </ul>
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
-                    <form method="POST" action="{% url 'save_data' %}">
+                    <form id="score-form-{{ student.id }}" method="POST" action="{% url 'save_data' %}">
                         {% csrf_token %}
                         <input type="hidden" name="student_id" value="{{ student.id }}">
                         <div class="question">
@@ -169,6 +169,7 @@
             var form = document.getElementById("score-form-" + studentId);
             var formData = new FormData(form);
             var xhr = new XMLHttpRequest();
+            xhr.open("POST", "{% url 'save_data' %}");
             xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
             xhr.onreadystatechange = function () {
                 if (xhr.readyState === 4 && xhr.status === 200) {

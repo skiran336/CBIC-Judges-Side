@@ -98,6 +98,7 @@ def save_data(request):
 
         # Convert student_id to ObjectId
         student_id = ObjectId(student_id)
+        print(student_id)
 
         # Check if the student data already exists
         existing_student = student_collection.find_one({"_id": student_id})

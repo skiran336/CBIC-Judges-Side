@@ -55,7 +55,7 @@
                     </ul>
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
-                    <p style="color: green;">Please submit your scores for the current idea:</div>p>
+                    <p style="color: green;">Please submit your scores for the current idea:</p>
 
                     <form id="score-form-{{ student.id }}" method="POST" action="{% url 'save_data' %}">
                         {% csrf_token %}

@@ -85,7 +85,7 @@ def signout(request):
 def save_data(request):
     if request.method == "POST":
         # Get the form data
-        student_id = request.POST.get("student_id")
+        student_id = request.POST.get("_id")
         identify = request.POST.get("identify")
         impact = request.POST.get("Impact")
         competitive = request.POST.get("Competitive")

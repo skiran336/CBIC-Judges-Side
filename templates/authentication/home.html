@@ -34,7 +34,7 @@
         <div class="accordion-container">
             {% for student in students %}
             <div class="accordion">
-                <button class="accordion-header"><h2>{{ student.ideaName }}   &#8594;      {{ student.track }}    &#8594;          {{ student.major }} </h2></button>
+                <button class="accordion-header"><h2>{{ student.ideaName }}   &#8594;      {{ student.track }}  </h2></button>
                 <div class="panel">
                     <p><strong>Name:</strong> {{ student.name }}</p>
                     <p><strong>Major:</strong> {{ student.major }}</p>
@@ -154,19 +154,29 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var acc = document.getElementsByClassName("accordion-header");
-            for (var i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {
-                        panel.style.maxHeight = null;
-                    } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
-                    }
-                });
-            }
+        var acc = document.getElementsByClassName("accordion-header");
+        for (var i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+
+        var submitButtons = document.querySelectorAll(".submit-btn");
+        submitButtons.forEach(function(button) {
+            button.addEventListener("click", function() {
+                var panel = this.closest(".accordion").querySelector(".panel");
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                }
+            });
         });
+    });
 
         function submitScores(studentId) {
         var form = document.getElementById("score-form-" + studentId);

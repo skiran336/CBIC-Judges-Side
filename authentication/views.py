@@ -1,3 +1,4 @@
+from http.client import HTTPResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.db import IntegrityError
@@ -7,44 +8,12 @@ from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from db_connection import student_collection
-from bson import ObjectId
 # Create your views here.
 
 def home(request):
-    
-    if request.method == 'POST':
-        # Get the student ID from the form
-        student_id = request.POST.get('student_id')
+     documents = student_collection.find()
 
-        # Fetch the student document from MongoDB
-        student = student_collection.find_one({'_id': ObjectId(student_id)})
-
-        # Update the student document with the submitted scores
-        student.update({
-            'identify_score': int(request.POST.get('identify', 0)),
-            'impact_score': int(request.POST.get('Impact', 0)),
-            'competitive_score': int(request.POST.get('Competitive', 0)),
-            'market_score': int(request.POST.get('Market', 0)),
-            'viability_score': int(request.POST.get('Viability', 0)),
-            'strategy_score': int(request.POST.get('Strategy', 0)),
-            'financial_score': int(request.POST.get('Financial', 0)),
-            'management_score': int(request.POST.get('Management', 0)),
-            'presentation_score': int(request.POST.get('Presentation', 0)),
-        })
-
-        # Save the updated student document back to MongoDB
-        student_collection.save(student)
-
-        # Optionally, you can display a success message
-        messages.success(request, 'Scores submitted successfully.')
-
-        # Redirect to the same page to avoid form resubmission on refresh
-        return redirect('home')
-    else:
-        # If it's not a POST request, just fetch the student documents
-        documents = student_collection.find()
-
-    return render(request, "authentication/home.html", {'students': documents} )
+     return render(request, "authentication/home.html", {'students': documents} )
 
 def scorepage(request):
     return render(request, "authentication/scorepage.html")
@@ -112,3 +81,38 @@ def signout(request):
     logout(request)
     return redirect('signin')
 
+def save_data(request):
+    if request.method == "POST":
+        # Get the form data
+        student_id = request.POST.get("student_id")
+        identify = request.POST.get("identify")
+        impact = request.POST.get("Impact")
+        competitive = request.POST.get("Competitive")
+        market = request.POST.get("Market")
+        viability = request.POST.get("Viability")
+        strategy = request.POST.get("Strategy")
+        financial = request.POST.get("Financial")
+        management = request.POST.get("Management")
+        presentation = request.POST.get("Presentation")
+
+        # Save the form data to MongoDB
+        data = {
+            "student_id": student_id,
+            "identify": identify,
+            "impact": impact,
+            "competitive": competitive,
+            "market": market,
+            "viability": viability,
+            "strategy": strategy,
+            "financial": financial,
+            "management": management,
+            "presentation": presentation
+        }
+        student_collection.insert_one(data)
+
+
+        # Redirect to a success page or return a success message
+        return HTTPResponse("Data saved successfully!")
+
+    else:
+        return HTTPResponse("Invalid request method")

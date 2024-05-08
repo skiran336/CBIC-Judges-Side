@@ -237,7 +237,7 @@ label {
     width: 100%;
     border: black;
     outline: none;
-    text-align: relative;
+    text-align: left;
     position: relative; /* Needed for positioning the arrow */
     transition: background-color 0.3s ease-in-out;
 }
@@ -245,7 +245,7 @@ label {
 .accordion-header::after {
     content: '▶'; /* Unicode right arrow */
     position: absolute;
-    left: 15px;;
+    right: 15px;;
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px;

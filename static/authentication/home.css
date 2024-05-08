@@ -237,7 +237,7 @@ label {
     width: 100%;
     border: black;
     outline: none;
-    text-align: left;
+    text-align: relative;
     position: relative; /* Needed for positioning the arrow */
     transition: background-color 0.3s ease-in-out;
 }

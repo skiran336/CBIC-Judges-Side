@@ -55,7 +55,7 @@
                     </ul>
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
-                    <form method="POST" >
+                    <form method="POST" action="{% url 'save_data' %}">
                         {% csrf_token %}
                         <input type="hidden" name="student_id" value="{{ student.id }}">
                         <div class="question">
@@ -140,7 +140,7 @@
                         </div>                        
                  </form>
 
-                    <button class="submit-btn" type="submit">Submit</button>
+                    <button class="submit-btn" type="submit" onclick="submitScores('{{ student.id }}')">Submit</button>
                 </div>
             </div>
             {% endfor %}
@@ -164,6 +164,21 @@
                 });
             }
         });
+
+        function submitScores(studentId) {
+            var form = document.getElementById("score-form-" + studentId);
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "{% url 'save_scores' %}");
+            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    // Handle success, if needed
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send(formData);
+        }
     </script>
 </body>
 </html>

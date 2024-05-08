@@ -8,6 +8,7 @@ from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from db_connection import student_collection
+from bson import ObjectId
 # Create your views here.
 
 def home(request):
@@ -95,6 +96,9 @@ def save_data(request):
         management = request.POST.get("Management")
         presentation = request.POST.get("Presentation")
 
+        # Convert student_id to ObjectId
+        student_id = ObjectId(student_id)
+
         # Save the form data to MongoDB
         data = {
             "_id": student_id,
@@ -110,9 +114,8 @@ def save_data(request):
         }
         student_collection.insert_one(data)
 
-
         # Redirect to a success page or return a success message
-        return HTTPResponse("Data saved successfully!")
+        return HttpResponse("Data saved successfully!")
 
     else:
-        return HTTPResponse("Invalid request method")
+        return HttpResponse("Invalid request method")

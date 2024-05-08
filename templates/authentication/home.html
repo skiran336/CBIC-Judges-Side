@@ -55,7 +55,7 @@
                     </ul>
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
-                    <form method="POST" >
+                    <form>
                         {% csrf_token %}
                         <input type="hidden" name="student_id" value="{{ student.id }}">
                     <div class="question">

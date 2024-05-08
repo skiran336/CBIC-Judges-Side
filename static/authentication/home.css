@@ -227,7 +227,7 @@ label {
 
 /* Accordion styles */
 .accordion-header {
-    background-color: white;
+    background-color: #fdb515;
     color: black;
     cursor: pointer;
     padding: 15px;

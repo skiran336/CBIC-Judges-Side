@@ -262,6 +262,15 @@ label {
     border-bottom: 1px solid #eee;
 }
 
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%; /* Takes full parent width */
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
 .accordion {
     width: 100%;
     margin-bottom: 10px;

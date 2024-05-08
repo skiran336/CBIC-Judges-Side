@@ -97,7 +97,7 @@ def save_data(request):
 
         # Save the form data to MongoDB
         data = {
-            "student_id": student_id,
+            "_id": student_id,
             "identify": identify,
             "impact": impact,
             "competitive": competitive,

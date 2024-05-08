@@ -235,7 +235,22 @@ label {
     border: none;
     outline: none;
     text-align: left;
+    position: relative; /* Needed for positioning the arrow */
     transition: background-color 0.3s ease-in-out;
+}
+
+.accordion-header::after {
+    content: '▶'; /* Unicode right arrow */
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    transition: transform 0.3s ease, content 0.3s ease;
+}
+
+.accordion-header.active::after {
+    content: '▼'; /* Unicode down arrow */
 }
 
 .accordion-header:hover {

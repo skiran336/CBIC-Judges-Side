@@ -57,7 +57,8 @@
 
                     <p style="color: green;">Please submit your scores for the current idea:</p>
 
-                    <form id="score-form-{{ student.id }}" method="POST" action="{% url 'save_data' %}">
+                    <form id="score-form-{{ student.id }}" method="POST" action="{% url 'save_data' %}" onsubmit="submitScores('{{ student.id }}'); return false;">
+
                         {% csrf_token %}
                         <input type="hidden" name="student_id" value="{{ student.id }}">
                         <div class="question">
@@ -168,19 +169,19 @@
         });
 
         function submitScores(studentId) {
-            var form = document.getElementById("score-form-" + studentId);
-            var formData = new FormData(form);
-            var xhr = new XMLHttpRequest();
-            xhr.open("POST", "{% url 'save_data' %}");
-            xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    // Handle success, if needed
-                    console.log(xhr.responseText);
-                }
-            };
-            xhr.send(formData);
-        }
+        var form = document.getElementById("score-form-" + studentId);
+        var formData = new FormData(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "{% url 'save_data' %}");
+        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Handle success, if needed
+                console.log(xhr.responseText);
+            }
+        };
+        xhr.send(formData);
+    }
     </script>
 </body>
 </html>

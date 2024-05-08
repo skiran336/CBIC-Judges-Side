@@ -56,7 +56,7 @@
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
 
-                    <form id="score-form-{{ student._id }}" method="POST" action="{% url 'save_data' %}" onsubmit="submitScores('{{ student._id }}'); return false;">
+                    <form id="score-form-{{ student.id }}" method="POST" action="{% url 'save_data' %}" onsubmit="submitScores('{{ student._id }}'); return false;">
 
                         {% csrf_token %}
                         <p style="color: green;"><strong>Please submit your scores for the current idea:</strong></p>

@@ -99,23 +99,30 @@ def save_data(request):
         # Convert student_id to ObjectId
         student_id = ObjectId(student_id)
 
-        # Save the form data to MongoDB
-        data = {
-            "_id": student_id,
-            "identify": identify,
-            "impact": impact,
-            "competitive": competitive,
-            "market": market,
-            "viability": viability,
-            "strategy": strategy,
-            "financial": financial,
-            "management": management,
-            "presentation": presentation
-        }
-        student_collection.insert_one(data)
+        # Check if the student data already exists
+        existing_student = student_collection.find_one({"_id": student_id})
 
-        # Redirect to a success page or return a success message
-        return HttpResponse("Data saved successfully!")
+        if existing_student:
+            # Update the existing document in MongoDB
+            student_collection.update_one(
+                {"_id": student_id},
+                {
+                    "$set": {
+                        "identify": identify,
+                        "impact": impact,
+                        "competitive": competitive,
+                        "market": market,
+                        "viability": viability,
+                        "strategy": strategy,
+                        "financial": financial,
+                        "management": management,
+                        "presentation": presentation
+                    }
+                }
+            )
+            return HttpResponse("Data updated successfully!")
+        else:
+            return HttpResponse("Student data not found")
 
     else:
         return HttpResponse("Invalid request method")

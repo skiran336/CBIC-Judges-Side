@@ -58,7 +58,7 @@
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
 
-                    <form id="score-form-{{ student.id }}" method="POST" action="{% url 'save_data' %}" onsubmit="submitScores('{{ student.id }}'); return false;">
+                    <form id="score-form-{{ student.id }}" method="POST" action="{% url 'save_data' %}">
 
                         {% csrf_token %}
                         <p style="color: green;"><strong>Please submit your scores for the current idea:</p>
@@ -142,10 +142,9 @@
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="3"> 3</label>
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="4"> 4</label>
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="5"> 5</label>
-                        </div>                        
-                 </form>
-
+                        </div>                      
                     <button class="submit-btn" type="submit">Submit</button>
+                </form>
                 </div>
             </div>
             {% endfor %}
@@ -156,38 +155,39 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-        var acc = document.getElementsByClassName("accordion-header");
-        for (var i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
-        }
+    var acc = document.getElementsByClassName("accordion-header");
+    for (var i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
 
-        var submitButtons = document.querySelectorAll(".submit-btn");
-        submitButtons.forEach(function(button) {
-            button.addEventListener("click", function() {
-                var panel = this.closest(".accordion").querySelector(".panel");
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                }
-            });
+    var submitButtons = document.querySelectorAll(".submit-btn");
+    submitButtons.forEach(function(button) {
+        button.addEventListener("click", function() {
+            var panel = this.closest(".accordion").querySelector(".panel");
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            }
+            var form = panel.querySelector("form");
+            submitScores(form);
         });
     });
+    });
 
-        function submitScores(studentId) {
-        var form = document.getElementById("score-form-" + studentId);
-        var formData = new FormData(form);
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "{% url 'save_data' %}");
-        xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-        xhr.onreadystatechange = function () {
-         if (xhr.readyState === 4) {
+    function submitScores(form) {
+      var formData = new FormData(form);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "{% url 'save_data' %}");
+      xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+     xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 // Handle success, if needed
                 console.log(xhr.responseText);
@@ -196,9 +196,10 @@
                 console.error("Error:", xhr.status);
             }
         }
-        };
-            xhr.send(formData);
+    };
+    xhr.send(formData);
 }
+
     </script>
 </body>
 </html>

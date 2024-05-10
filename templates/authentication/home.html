@@ -37,7 +37,8 @@
             <div class="accordion">
                 <button class="accordion-header"><h2>{{ student.ideaName }}   &#8594;      {{ student.track }}  </h2></button>
                 <div class="panel">
-                    <p><strong>Name:</strong> {{ student.id }}</p>
+                    {% load mongodb_tags %}
+                    <p><strong>Name:</strong> {{ student | mongo_id }}</p>
                     <p><strong>Name:</strong> {{ student.name }}</p>
                     <p><strong>Major:</strong> {{ student.major }}</p>
                     <p><strong>Email:</strong> {{ student.email }}</p>
@@ -58,7 +59,7 @@
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
 
-                    <form id="score-form-{{ student.id |stringformat:'s'}}" method="POST" action="{% url 'save_data' %}">
+                    <form id="score-form-{{ student.email}}" method="POST" action="{% url 'save_data' %}">
 
                         {% csrf_token %}
                         <p style="color: green;"><strong>Please submit your scores for the current idea:</p>

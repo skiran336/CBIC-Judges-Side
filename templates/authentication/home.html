@@ -37,7 +37,7 @@
             <div class="accordion">
                 <button class="accordion-header"><h2>{{ student.ideaName }}   &#8594;      {{ student.track }}  </h2></button>
                 <div class="panel">
-                    {% load mongodb_tags %}
+                    {% load custom_tags %}
                     <p><strong>Name:</strong> {{ student | mongo_id }}</p>
                     <p><strong>Name:</strong> {{ student.name }}</p>
                     <p><strong>Major:</strong> {{ student.major }}</p>

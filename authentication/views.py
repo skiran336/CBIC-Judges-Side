@@ -105,7 +105,7 @@ def save_data(request):
 
         if existing_student:
             # Update the existing document in MongoDB
-            student_collection.update_one(
+            student_collection.save(
                 {"_id": student_id},
                 {
                     "$set": {

@@ -142,13 +142,8 @@
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="3"> 3</label>
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="4"> 4</label>
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="5"> 5</label>
-                        </div>  
-                        <div id="success-message-{{ student.email }}" style="display:none;" class="success-message">
-                            Submission successful!
-                        </div>                        
+                        </div>                      
                     <button class="submit-btn" type="submit">Submit</button>
-                                    
-                    
                 </form>
                 </div>
             </div>
@@ -189,37 +184,26 @@
     });
 
     function submitScores(form) {
-    var email = form.querySelector("[name=student_email]").value;
-    var sanitizedEmail = email.replace(/[^a-zA-Z0-9]/g, ''); // Removes all non-alphanumeric characters from email
-    var formData = new FormData(form);
-    formData.set("student_email", email);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "{% url 'home' %}");
-    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-    xhr.onreadystatechange = function () {
+      var email = form.querySelector("[name=student_email]").value;
+      var formData = new FormData(form);
+      formData.set("student_email", email);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "{% url 'home' %}");
+      xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-            var successMessage = document.getElementById("success-message-" + sanitizedEmail); // Access the correct success message div using sanitized email
             if (xhr.status === 200) {
-                successMessage.style.display = "block";
-                successMessage.textContent = "Submission successful!";
-                setTimeout(function() {
-                    successMessage.style.display = "none";
-                }, 5000);
+                // Handle success, if needed
+                console.log(xhr.responseText);
             } else {
+                // Handle error
                 console.error("Error:", xhr.status);
-                successMessage.style.display = "block";
-                successMessage.textContent = "Error submitting the form.";
-                setTimeout(function() {
-                    successMessage.style.display = "none";
-                }, 5000);
             }
         }
     };
     xhr.send(formData);
     event.preventDefault();
 }
-
-
 
     </script>
 </body>

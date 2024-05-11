@@ -36,7 +36,6 @@
             {% for student in students %}
             <div class="accordion">
                 <button class="accordion-header"><h2>{{ student.ideaName }}   &#8594;      {{ student.track }}  </h2></button>
-                <div id="message-container-{{ student.email }}" class="message-container" style="display: none;"></div>
                 <div class="panel">
                     <p><strong>Name:</strong> {{ student.id }}</p>
                     <p><strong>Name:</strong> {{ student.name }}</p>
@@ -145,6 +144,7 @@
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="5"> 5</label>
                         </div>                      
                     <button class="submit-btn" type="submit">Submit</button>
+                    <div id="message-container-{{ student.email }}" class="message-container" style="display: none;"></div>
                 </form>
                 </div>
             </div>
@@ -154,6 +154,7 @@
         <p>You are not logged in.</p>
         {% endif %}
     </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
     var acc = document.getElementsByClassName("accordion-header");

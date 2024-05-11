@@ -311,3 +311,125 @@ label {
 .submit-btn:hover {
     background-color: #ffae00;
 }
+/* CSS for success message */
+.success-message {
+    background-color: #d4edda; /* Light green background */
+    color: #155724; /* Dark green text color */
+    border: 1px solid #c3e6cb; /* Green border */
+    padding: 10px 15px; /* Padding around the message */
+    margin-bottom: 20px; /* Margin at the bottom to separate from other content */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+}
+@media only screen and (max-width: 768px) {
+    .img-container,
+    .form-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .black-box .text {
+        margin-left: 10px;
+        font-size: 24px;
+    }
+
+    .yellow-box .text {
+        font-size: 20px;
+    }
+
+    .remember-forgot {
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .remember-forgot button {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    form {
+        width: 90%;
+        max-width: 400px;
+    }
+
+    .header {
+        justify-content: center;
+    }
+
+    .logout-container {
+        position: static;
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    .logout-container a {
+        display: inline-block;
+        margin: 10px 0;
+    }
+
+    .accordion-container {
+        width: 90%;
+    }
+
+    .accordion-header {
+        font-size: 18px;
+    }
+
+    .accordion-header::after {
+        font-size: 16px;
+    }
+
+    .panel {
+        padding: 0 10px;
+    }
+
+    .success-message {
+        font-size: 16px;
+        padding: 8px 12px;
+        margin-bottom: 16px;
+    }
+}
+
+/* Additional adjustments for smaller screens */
+@media only screen and (max-width: 480px) {
+    .black-box img {
+        margin-left: 10px;
+    }
+
+    .black-box .text {
+        margin-left: 20px;
+        font-size: 20px;
+    }
+
+    .yellow-box .text {
+        font-size: 18px;
+    }
+
+    .header {
+        padding: 8px;
+    }
+
+    .logout-container {
+        margin: 10px 0;
+    }
+
+    .accordion-header {
+        padding: 12px;
+    }
+
+    .accordion-header::after {
+        right: 10px;
+        font-size: 14px;
+    }
+
+    .panel {
+        padding: 0 8px;
+    }
+
+    .success-message {
+        font-size: 14px;
+        padding: 6px 10px;
+        margin-bottom: 12px;
+    }
+}

@@ -13,8 +13,52 @@ from bson import ObjectId
 
 def home(request):
      documents = student_collection.find()
+     success_message = None
+     for doc in documents:
+        doc['_id'] = str(doc['_id'])
+     if request.method == "POST":
+        # Get the form data
+        student_email = request.POST.get("student_email")
+        identify = int(request.POST.get("identify", 0))
+        impact = int(request.POST.get("Impact", 0))
+        competitive = int(request.POST.get("Competitive", 0))
+        market = int(request.POST.get("Market", 0))
+        viability = int(request.POST.get("Viability", 0))
+        strategy = int(request.POST.get("Strategy", 0))
+        financial = int(request.POST.get("Financial", 0))
+        management = int(request.POST.get("Management", 0))
+        presentation = int(request.POST.get("Presentation", 0))
+        
+        total_score = identify + impact + competitive + market + viability + strategy + financial + management + presentation
 
-     return render(request, "authentication/home.html", {'students': documents} )
+        # Update the existing document in MongoDB
+        update_query = {
+            "$set": {
+                "identify": identify,
+                "impact": impact,
+                "competitive": competitive,
+                "market": market,
+                "viability": viability,
+                "strategy": strategy,
+                "financial": financial,
+                "management": management,
+                "presentation": presentation
+            },
+            "$inc": {
+                "total_score": total_score
+            }
+        }
+        # Execute the update query
+        result = student_collection.update_one(
+            {"email": student_email},
+            update_query,
+            upsert=True  # Create new document if not exists
+        )
+
+        if result.modified_count > 0 or result.upserted_id is not None:
+            success_message = "Data updated successfully!"
+
+     return render(request, "authentication/home.html", {'students': documents,"success_message": success_message} )
 
 def scorepage(request):
     return render(request, "authentication/scorepage.html")
@@ -82,48 +126,4 @@ def signout(request):
     logout(request)
     return redirect('signin')
 
-def save_data(request):
-    if request.method == "POST":
-        # Get the form data
-        student_id = request.POST.get("student_id")
-        identify = request.POST.get("identify")
-        impact = request.POST.get("Impact")
-        competitive = request.POST.get("Competitive")
-        market = request.POST.get("Market")
-        viability = request.POST.get("Viability")
-        strategy = request.POST.get("Strategy")
-        financial = request.POST.get("Financial")
-        management = request.POST.get("Management")
-        presentation = request.POST.get("Presentation")
 
-        # Convert student_id to ObjectId
-        student_id = ObjectId(student_id)
-        print(student_id)
-
-        # Check if the student data already exists
-        existing_student = student_collection.find_one({"_id": student_id})
-
-        if existing_student:
-            # Update the existing document in MongoDB
-            student_collection.save(
-                {"_id": student_id},
-                {
-                    "$set": {
-                        "identify": identify,
-                        "impact": impact,
-                        "competitive": competitive,
-                        "market": market,
-                        "viability": viability,
-                        "strategy": strategy,
-                        "financial": financial,
-                        "management": management,
-                        "presentation": presentation
-                    }
-                }
-            )
-            return HttpResponse("Data updated successfully!")
-        else:
-            return HttpResponse("Student data not found")
-
-    else:
-        return HttpResponse("Invalid request method")

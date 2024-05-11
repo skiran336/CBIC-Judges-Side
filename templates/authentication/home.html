@@ -144,7 +144,11 @@
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="5"> 5</label>
                         </div>                      
                     <button class="submit-btn" type="submit">Submit</button>
-                    <div id="message-container-{{ student.email }}" class="message-container" style="display: none;"></div>
+                    {% if success_message %}
+                    <div class="success-message">
+                          {{ success_message }}
+                  </div>
+    {% endif %}
                 </form>
                 </div>
             </div>
@@ -154,7 +158,6 @@
         <p>You are not logged in.</p>
         {% endif %}
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
     var acc = document.getElementsByClassName("accordion-header");
@@ -162,59 +165,50 @@
         acc[i].addEventListener("click", function() {
             this.classList.toggle("active");
             var panel = this.nextElementSibling;
-            panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            } else {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            }
         });
     }
 
     var submitButtons = document.querySelectorAll(".submit-btn");
     submitButtons.forEach(function(button) {
-        button.addEventListener("click", function(event) {
-            event.preventDefault();
-            var form = this.closest("form");
-            submitScores(form, event);
+        button.addEventListener("click", function() {
+            var panel = this.closest(".accordion").querySelector(".panel");
+            if (panel.style.maxHeight) {
+                panel.style.maxHeight = null;
+            }
+            var form = panel.querySelector("form");
+            submitScores(form);
         });
     });
-});
+    });
 
-function submitScores(form, event) {
-    var email = form.querySelector("[name='student_email']").value;
-    var formData = new FormData(form);
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", form.action);
-    xhr.setRequestHeader("X-CSRFToken", form.querySelector("[name='csrfmiddlewaretoken']").value);
-
-    xhr.onload = function() {
-        var messageContainer = document.getElementById("message-container-" + email.replace(/@.*/, '')); // Make sure ID matches the HTML
-        if (xhr.status >= 200 && xhr.status < 300) {
-            console.log('Success:', xhr.responseText);
-            messageContainer.innerHTML = "<p style='color: green;'>Scores submitted successfully!</p>";
-        } else {
-            console.error('Error:', xhr.status, xhr.statusText);
-            messageContainer.innerHTML = "<p style='color: red;'>Failed to submit scores: " + xhr.statusText + "</p>";
+    function submitScores(form) {
+        event.preventDefault();
+      var email = form.querySelector("[name=student_email]").value;
+      var formData = new FormData(form);
+      formData.set("student_email", email);
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", "{% url 'home' %}");
+      xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+     xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                // Handle success, if needed
+                console.log(xhr.responseText);
+            } else {
+                // Handle error
+                console.error("Error:", xhr.status);
+            }
         }
-        messageContainer.style.display = "block";
-        closeAccordion(form);
     };
-
-    xhr.onerror = function () {
-        var messageContainer = document.getElementById("message-container-" + email.replace(/@.*/, ''));
-        console.error('Error during the request.');
-        messageContainer.innerHTML = "<p style='color: red;'>Error during the request.</p>";
-        messageContainer.style.display = "block";
-        closeAccordion(form);
-    };
-
     xhr.send(formData);
 }
 
-function closeAccordion(form) {
-    var panel = form.closest(".panel");
-    panel.style.maxHeight = null;
-    var accordionHeader = panel.previousElementSibling;
-    accordionHeader.classList.remove("active");
-}
-
-        </script>        
+    </script>
 </body>
 </html>
 {% endblock %}

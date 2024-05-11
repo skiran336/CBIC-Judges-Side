@@ -155,57 +155,50 @@
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-    var acc = document.getElementsByClassName("accordion-header");
-    for (var i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
+            var acc = document.getElementsByClassName("accordion-header");
+            for (var i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                    panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+                });
             }
+        
+            var submitButtons = document.querySelectorAll(".submit-btn");
+            submitButtons.forEach(function(button) {
+                button.addEventListener("click", function(event) {
+                    var form = this.closest("form");
+                    submitScores(form, event);
+                });
+            });
         });
-    }
-
-    var submitButtons = document.querySelectorAll(".submit-btn");
-    submitButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
-            var panel = this.closest(".accordion").querySelector(".panel");
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-                var accordionHeader = this.closest(".accordion").querySelector(".accordion-header");
-                accordionHeader.classList.toggle("active");
-            }
-            var form = panel.querySelector("form");
-            submitScores(form);
-        });
-    });
-    });
-
-    function submitScores(form) {
-      var email = form.querySelector("[name=student_email]").value;
-      var formData = new FormData(form);
-      formData.set("student_email", email);
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "{% url 'home' %}");
-      xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-     xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4) {
-            if (xhr.status === 200) {
-                // Handle success, if needed
-                console.log(xhr.responseText);
-            } else {
-                // Handle error
-                console.error("Error:", xhr.status);
-            }
+        
+        function submitScores(form, event) {
+            event.preventDefault();  // Prevent the form from submitting via the HTML form action
+            var email = form.querySelector("[name='student_email']").value;
+            var formData = new FormData(form);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", form.action);
+            xhr.setRequestHeader("X-CSRFToken", form.querySelector("[name='csrfmiddlewaretoken']").value);
+        
+            xhr.onload = function() {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    console.log('Success:', xhr.responseText);
+                    alert("Scores submitted successfully!");  // Provide user feedback
+                } else {
+                    console.error('Error:', xhr.status, xhr.statusText);
+                    alert("Failed to submit scores: " + xhr.statusText);  // Provide user feedback
+                }
+            };
+        
+            xhr.onerror = function () {
+                console.error('Error during the request.');
+                alert("Error during the request.");
+            };
+        
+            xhr.send(formData);
         }
-    };
-    xhr.send(formData);
-    event.preventDefault();
-}
-
-    </script>
+        </script>        
 </body>
 </html>
 {% endblock %}

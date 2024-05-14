@@ -14,8 +14,6 @@ from bson import ObjectId
 def home(request):
      documents = student_collection.find()
      success_message = None
-     for doc in documents:
-        doc['_id'] = str(doc['_id'])
      if request.method == "POST":
         # Get the form data
         student_email = request.POST.get("student_email")
@@ -61,7 +59,9 @@ def home(request):
      return render(request, "authentication/home.html", {'students': documents,"success_message": success_message} )
 
 def scorepage(request):
-    return render(request, "authentication/scorepage.html")
+    documents = student_collection.find()
+
+    return render(request, "authentication/scorepage.html",{'students': documents})
 
 def signup(request):
 

@@ -35,9 +35,8 @@
         <div class="accordion-container">
             {% for student in students %}
             <div class="accordion">
-                <button class="accordion-header"><h2>{{ student.ideaName }}   &#8594;      {{ student.track }}  </h2></button>
+                <button class="accordion-header"><h2>{{ student.ideaName }}   &#35;      {{ student.track }}  </h2></button>
                 <div class="panel">
-                    <p><strong>Name:</strong> {{ student.id }}</p>
                     <p><strong>Name:</strong> {{ student.name }}</p>
                     <p><strong>Major:</strong> {{ student.major }}</p>
                     <p><strong>Email:</strong> {{ student.email }}</p>
@@ -57,7 +56,11 @@
                     </ul>
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
+                    {% if student.total_score != 0 %}
+                    <div>You have already submitted your scores! </div>
+                    {% endif %}
 
+                    {% else %}
                     <form id="score-form-{{ student.email}}" method="POST" action="{% url 'home' %}">
 
                         {% csrf_token %}
@@ -148,8 +151,9 @@
                     <div class="success-message">
                           {{ success_message }}
                   </div>
-    {% endif %}
+                     {% endif %}
                 </form>
+                {% endif %}
                 </div>
             </div>
             {% endfor %}

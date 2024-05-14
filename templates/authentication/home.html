@@ -56,10 +56,10 @@
                     </ul>
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
-                    
+                    {% if student.total_score %}
                     <div>You have already submitted your scores! </div>
 
-                    {% if student.total_score %}
+                    {% else %}
                     <form id="score-form-{{ student.email}}" method="POST" action="{% url 'home' %}">
 
                         {% csrf_token %}

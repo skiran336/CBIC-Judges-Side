@@ -180,33 +180,28 @@
 
     var submitButtons = document.querySelectorAll(".submit-btn");
     submitButtons.forEach(function(button) {
-        button.addEventListener("click", function() {
-            var panel = this.closest(".accordion").querySelector(".panel");
-            if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-            }
-            var form = panel.querySelector("form");
-            submitScores(form);
+        button.addEventListener("click", function(event) {
+            event.preventDefault();
+            var form = this.closest("form");
+            submitScores(form, this.closest(".panel"));
         });
     });
-    });
+});
 
-    function submitScores(form) {
-        event.preventDefault();
-      var email = form.querySelector("[name=student_email]").value;
-      var formData = new FormData(form);
-      formData.set("student_email", email);
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", "{% url 'home' %}");
-      xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
-     xhr.onreadystatechange = function () {
+function submitScores(form, panel) {
+    var formData = new FormData(form);
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", form.action);
+    xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
-                // Handle success, if needed
-                console.log(xhr.responseText);
+                // On success, update the panel content
+                panel.innerHTML = '<div style="color: green;"><strong>Scores submitted successfully!</strong></div>';
+                // Optionally, close the panel or refresh data
             } else {
-                // Handle error
-                console.error("Error:", xhr.status);
+                // On error, display an error message
+                panel.innerHTML += '<div style="color: red;"><strong>Error submitting scores. Please try again.</strong></div>';
             }
         }
     };

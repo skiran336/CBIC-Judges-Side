@@ -58,7 +58,6 @@
 
                     {% if student.total_score != 0 %}
                     <div>You have already submitted your scores! </div>
-                    {% endif %}
 
                     {% else %}
                     <form id="score-form-{{ student.email}}" method="POST" action="{% url 'home' %}">

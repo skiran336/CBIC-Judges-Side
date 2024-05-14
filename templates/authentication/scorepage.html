@@ -21,70 +21,7 @@
         <img src="https://entrepreneurship.umbc.edu/wp-content/uploads/sites/39/2022/05/new-CBIC-Logo-1-300x243.png"
             alt="External Source" />
     </div>
-    <div class="form-container">
-        <form>
-            <div>
-                <p class="centered-heading">WELCOME TO THE CBIC JUDGE PAGE</p>
-            </div>
-
-            <!-- Accordion 1 -->
-            <div class="question-container">
-                <button class="accordion">Identification and Definition of the Problem/Opportunity?</button>
-                <div class="panel">
-                    <div class="panel-content">
-                        <label>
-                            <input type="radio" name="identify" value="1"> 1
-                            <input type="radio" name="identify" value="2"> 2
-                            <input type="radio" name="identify" value="3"> 3
-                            <input type="radio" name="identify" value="4"> 4
-                            <input type="radio" name="identify" value="5"> 5
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accordion 2 -->
-            <div class="question-container">
-                <button class="accordion">Impact of Solution/Idea</button>
-                <div class="panel">
-                    <div class="panel-content">
-                        <label>
-                            <input type="radio" name="Impact" value="1"> 1
-                            <input type="radio" name="Impact" value="2"> 2
-                            <input type="radio" name="Impact" value="3"> 3
-                            <input type="radio" name="Impact" value="4"> 4
-                            <input type="radio" name="Impact" value="5"> 5
-                        </label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Add other accordion questions in the same pattern -->
-
-            <div class="submit">
-                <button type="submit">Submit</button>
-            </div>
-        </form>
-    </div>
-
-    <script>
-        // JavaScript to handle the accordion toggle
-        const accordions = document.querySelectorAll('.accordion');
-        accordions.forEach(accordion => {
-            accordion.addEventListener('click', function () {
-                // Toggle between adding and removing the "active" class to highlight the button that controls the panel
-                this.classList.toggle('active');
-
-                // Toggle visibility of the adjacent panel
-                const panel = this.nextElementSibling;
-                if (panel.style.display === 'block') {
-                    panel.style.display = 'none';
-                } else {
-                    panel.style.display = 'block';
-                }
-            });
-        });
-    </script>
+    
 
 </body>
 

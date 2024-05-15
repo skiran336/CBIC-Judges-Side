@@ -457,3 +457,11 @@ textarea {
     resize: vertical; /* Allows vertical resizing, not horizontal */
 }
 
+#view-submitted{
+    color: green;
+}
+
+#view-unsubmitted{
+    color: red;
+}
+

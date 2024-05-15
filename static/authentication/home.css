@@ -230,7 +230,6 @@ label {
 
 /* Accordion styles */
 .accordion-header {
-    height: 40px;
     background-color: #fdb515;
     color: black;
     cursor: pointer;

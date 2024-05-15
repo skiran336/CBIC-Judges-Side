@@ -230,6 +230,7 @@ label {
 
 /* Accordion styles */
 .accordion-header {
+    height: 40px;
     background-color: #fdb515;
     color: black;
     cursor: pointer;
@@ -450,7 +451,7 @@ label {
 }
 textarea {
     width: 100%; /* Makes the textarea take the full width of its container */
-    padding: 10px;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box; /* Includes padding and border in the element's total width and height */

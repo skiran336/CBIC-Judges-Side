@@ -40,7 +40,7 @@
         <div class="accordion-container">
             {% for student in students %}
             <div class="accordion">
-                <button class="accordion-header"><h2>{{ student.ideaName }}   &#35;      {{ student.track }}  </h2></button>
+                <button class="accordion-header"><h2>{{ student.ideaName }}   &#35;      {{ student.track }}  {% if student.total_score%}<span>&#10003;</span> {% endif %}</h2></button>
                 <div class="panel">
                     <p><strong>Name:</strong> {{ student.name }}</p>
                     <p><strong>Major:</strong> {{ student.major }}</p>
@@ -153,7 +153,7 @@
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="5"> 5</label>
                         </div> 
                         <div>
-
+                            
                         </div>                     
                     <button class="submit-btn" type="submit">Submit</button>
                     {% if success_message %}
@@ -172,7 +172,6 @@
         {% endif %}
     </div>
     <script>
-        xhr.open("POST", "{% url 'home' %}");
         document.addEventListener('DOMContentLoaded', function () {
     var acc = document.getElementsByClassName("accordion-header");
     for (var i = 0; i < acc.length; i++) {

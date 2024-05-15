@@ -458,10 +458,10 @@ textarea {
 }
 
 #view-submitted{
-    color: green;
+    background-color: green;
 }
 
 #view-unsubmitted{
-    color: red;
+    background-color: red;
 }
 

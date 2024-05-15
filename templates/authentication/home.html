@@ -40,9 +40,9 @@
         {% if user.is_authenticated %}
         <div class="accordion-container">
             {% for student in students %}
-            <div class="accordion {% if student.score_by_username %}submitted{% else %}unsubmitted{% endif %}">
+            <div class="accordion {% if student.total_score %}submitted{% else %}unsubmitted{% endif %}">
                 <button class="accordion-header">
-                    <h2>{{ student.ideaName }}        &#35;  {{ student.track }}    {% if student.score_by_username %}  <span> &#10003;</span> {% endif %}</h2>
+                    <h2>{{ student.ideaName }}        &#35;  {{ student.track }}    {% if student.total_score %}  <span> &#10003;</span> {% endif %}</h2>
                 </button>
                 <div class="panel">
                     <p><strong>Name:</strong> {{ student.name }}</p>
@@ -64,7 +64,7 @@
                     </ul>
                     <p><strong>Time to Launch:</strong> {{ student.timeToLaunch }}</p>
 
-                    {% if student.score_by_username %}
+                    {% if student.total_score %}
                     <div>
                         <p style="color: green;"><strong>You have already submitted your scores!</p>
                     </div>

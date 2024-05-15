@@ -35,7 +35,7 @@
         <h1>Welcome {{ user.first_name }}!</h1>
         <p><strong>Below are the list of ideas submitted by students. Click on each button to open and score </strong></p>
     </div>
-    <div class="button-container" style="text-align: center; margin-top: 20px;">
+    <div class="button-container">
         <button class="submit-btn">View All </button>
         <button class="submit-btn">View Submitted</button>
         <button class="submit-btn">View Unsubmitted</button>
@@ -46,7 +46,7 @@
         <div class="accordion-container">
             {% for student in students %}
             <div class="accordion">
-                <button class="accordion-header"><h2>{{ student.ideaName }}        &#35;  {{ student.track }}    {% if student.total_score%}   <span style="color: green;"> &#10003;</span> {% endif %}</h2></button>
+                <button class="accordion-header"><h2>{{ student.ideaName }}        Track:{{ student.track }}    {% if student.total_score%}   <span style="color: green;"> &#10003;</span> {% endif %}</h2></button>
                 <div class="panel">
                     <p><strong>Name:</strong> {{ student.name }}</p>
                     <p><strong>Major:</strong> {{ student.major }}</p>

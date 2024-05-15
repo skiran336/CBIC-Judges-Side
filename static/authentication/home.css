@@ -437,12 +437,13 @@ label {
 .button-container {
     text-align: center;
     margin-top: 20px; /* Adjusts the spacing above the button container */
+    gap: 40px;
 }
 
 .accordion-header h2 {
     display: flex;
     align-items: center; /* Ensures vertical alignment if different line heights or font sizes are used */
-    gap: 20px; /* Creates space between the elements */
+    gap: 80px; /* Creates space between the elements */
 }
 
 .accordion-header h2 span {

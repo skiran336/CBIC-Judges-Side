@@ -40,7 +40,7 @@
         <div class="accordion-container">
             {% for student in students %}
             <div class="accordion">
-                <button class="accordion-header"><h2>{{ student.ideaName }}   &#35;      {{ student.track }}  {% if student.total_score%}<span>&#10003;</span> {% endif %}</h2></button>
+                <button class="accordion-header"><h2>{{ student.ideaName }}   &#35;      <span style="color: burlywood;"> {{ student.track }} </span>   {% if student.total_score%}   <span style="color: green;"> &#10003;</span> {% endif %}</h2></button>
                 <div class="panel">
                     <p><strong>Name:</strong> {{ student.name }}</p>
                     <p><strong>Major:</strong> {{ student.major }}</p>

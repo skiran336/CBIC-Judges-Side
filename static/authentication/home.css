@@ -437,7 +437,6 @@ label {
 .button-container {
     text-align: center;
     margin-top: 20px; /* Adjusts the spacing above the button container */
-    gap: 20px;
 }
 
 .accordion-header h2 {
@@ -448,5 +447,13 @@ label {
 
 .accordion-header h2 span {
     color: green; /* Styles the check mark, assuming it's the only span */
+}
+textarea {
+    width: 100%; /* Makes the textarea take the full width of its container */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    resize: vertical; /* Allows vertical resizing, not horizontal */
 }
 

@@ -26,11 +26,6 @@
             Logout
         </a>
     </div>
-    <div class="logout-container">
-        <a href="{% url 'scorepage' %}">
-            View Team Scores
-        </a>
-    </div>
     <div class="container">
         <h1>Welcome {{ user.first_name }}!</h1>
         <p><strong>Below are the list of ideas submitted by students. Click on each button to open and score </strong></p>
@@ -159,6 +154,10 @@
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="4"> 4</label>
                             <label class="rating-label"><input type="radio" class="rating-input" name="Presentation" value="5"> 5</label>
                         </div> 
+                        <div class="feedback-area">
+                            <label for="feedback">Feedback:</label>
+                            <textarea id="feedback" name="feedback" rows="4" placeholder="Provide any additional feedback or comments here..."></textarea>
+                        </div>
                         <div>
                             
                         </div>                     

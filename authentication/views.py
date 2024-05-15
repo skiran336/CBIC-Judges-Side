@@ -14,6 +14,8 @@ from bson import ObjectId
 def home(request):
      documents = student_collection.find()
      success_message = None
+     username = request.user.username
+
      if request.method == "POST":
         # Get the form data
         student_email = request.POST.get("student_email")
@@ -29,9 +31,13 @@ def home(request):
         
         total_score = identify + impact + competitive + market + viability + strategy + financial + management + presentation
 
+        user_key = f'score_by_{request.user.username}'
+        user_total_score_key = f'total_score_by_{request.user.username}'
+
         # Update the existing document in MongoDB
         update_query = {
             "$set": {
+                user_key: {
                 "identify": identify,
                 "impact": impact,
                 "competitive": competitive,
@@ -41,6 +47,8 @@ def home(request):
                 "financial": financial,
                 "management": management,
                 "presentation": presentation
+            },
+            user_total_score_key: total_score
             },
             "$inc": {
                 "total_score": total_score
@@ -56,7 +64,7 @@ def home(request):
         if result.modified_count > 0 or result.upserted_id is not None:
             success_message = "Data updated successfully!"
 
-     return render(request, "authentication/home.html", {'students': documents,"success_message": success_message} )
+     return render(request, "authentication/home.html", {'students': documents,"success_message": success_message, "username": username} )
 
 def scorepage(request):
     documents = student_collection.find()

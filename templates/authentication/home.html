@@ -36,17 +36,18 @@
         <p><strong>Below are the list of ideas submitted by students. Click on each button to open and score </strong></p>
     </div>
     <div class="button-container">
-        <button class="submit-btn">View All </button>
-        <button class="submit-btn">View Submitted</button>
-        <button class="submit-btn">View Unsubmitted</button>
+        <button class="submit-btn" id="view-all">View All</button>
+        <button class="submit-btn" id="view-submitted">View Submitted</button>
+        <button class="submit-btn" id="view-unsubmitted">View Unsubmitted</button>
     </div>
 
     <div class="form-container">
         {% if user.is_authenticated %}
         <div class="accordion-container">
             {% for student in students %}
-            <div class="accordion">
-                <button class="accordion-header"><h2>{{ student.ideaName }}        Track:{{ student.track }}    {% if student.total_score%}   <span style="color: green;"> &#10003;</span>  Score: {{student.total_score}}{% endif %}</h2></button>
+            <div class="accordion {% if student.total_score %}submitted{% else %}unsubmitted{% endif %}">
+
+                <button class="accordion-header"><h2>{{ student.ideaName }}        &#35;  {{ student.track }}    {% if student.total_score%}   <span> &#10003;</span> {% endif %}</h2></button>
                 <div class="panel">
                     <p><strong>Name:</strong> {{ student.name }}</p>
                     <p><strong>Major:</strong> {{ student.major }}</p>
@@ -188,6 +189,41 @@
                 panel.style.maxHeight = null;
             } else {
                 panel.style.maxHeight = panel.scrollHeight + "px";
+            }
+        });
+    }
+
+    document.getElementById('view-all').addEventListener('click', function() {
+        displayAccordions('all');
+    });
+    document.getElementById('view-submitted').addEventListener('click', function() {
+        displayAccordions('submitted');
+    });
+    document.getElementById('view-unsubmitted').addEventListener('click', function() {
+        displayAccordions('unsubmitted');
+    });
+
+    function displayAccordions(type) {
+        let accordions = document.querySelectorAll('.accordion');
+        accordions.forEach(function(accordion) {
+            switch (type) {
+                case 'all':
+                    accordion.style.display = '';
+                    break;
+                case 'submitted':
+                    if (accordion.classList.contains('submitted')) {
+                        accordion.style.display = '';
+                    } else {
+                        accordion.style.display = 'none';
+                    }
+                    break;
+                case 'unsubmitted':
+                    if (accordion.classList.contains('unsubmitted')) {
+                        accordion.style.display = '';
+                    } else {
+                        accordion.style.display = 'none';
+                    }
+                    break;
             }
         });
     }
